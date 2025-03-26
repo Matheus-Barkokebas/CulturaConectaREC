@@ -41,8 +41,8 @@ João Neri - jgsn@cesar.school
 
 Gabriel Guedes - gpg3@cesar.school
 
-Luiz Eduardo - @cesar.school
+Luiz Eduardo - lemm@cesar.school
 
-Pedro Pessoa - @cesar.school
+Pedro Pessoa - ppb2@cesar.school
 
-Lucas Canto - @cesar.school
+Lucas Canto - lcss@cesar.school
