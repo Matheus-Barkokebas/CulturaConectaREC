@@ -21,7 +21,9 @@ Com o CulturaConecta REC, Recife se torna ainda mais vibrante e acessível, pote
 ![Print do Backlog](imgs-readme/imgs-backlog/Backlog_10.png)  
 
 ## 🎨 Sketches e Storyboards  
-📌 **Link para Storyboards:** [Storyboards CulturaConectaREC](link_aqui)  
+📌 **Storyboard:**
+
+![StoryBoard](imgs-readme/Historybord.png)
 
 📌 **Sketche:**  
 
