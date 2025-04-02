@@ -45,7 +45,7 @@ Com o CulturaConecta REC, Recife se torna ainda mais vibrante e acessível, pote
     <summary>5. Atualizações em Tempo Real para Melhor Planejamento Turístico </summary>
 
 - *Como* Carlos, coordenador de turismo da Secretaria de Turismo, *Quero* receber notificações automáticas sobre mudanças na programação de eventos, *Para que* eu possa adaptar os roteiros turísticos em tempo hábil e evitar que turistas sejam impactados por cancelamentos ou alterações inesperadas. Atualmente, a comunicação entre setores é lenta, e mudanças de última hora podem comprometer a experiência dos visitantes. Com esse sistema de notificações, posso ajustar os roteiros rapidamente, garantindo que os turistas aproveitem ao máximo sua estadia na cidade.
-![Print do Backlog](imgs-readme/imgs-backlog/Backlog_7.png)    
+![Print do Backlog](imgs-readme/imgs-backlog/Backlog_5.png)    
 </details>
 
 <details> 
