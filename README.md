@@ -42,38 +42,24 @@ Com o CulturaConecta REC, Recife se torna ainda mais vibrante e acessível, pote
 </details>
 
 <details> 
-    <summary>6. Automação da Análise Financeira e Redução da Burocracia </summary>
-
-- *Como* João, coordenador financeiro da prefeitura, *Quero* um sistema que organize e detalhe os custos de cada evento cultural e turístico, *Para que* eu possa aprovar orçamentos de forma mais ágil, avaliar o retorno financeiro das iniciativas e reduzir processos burocráticos desnecessários. Atualmente, a falta de transparência nos custos de eventos dificulta a tomada de decisões e pode atrasar a liberação de verbas. Com uma ferramenta automatizada, posso acessar relatórios financeiros detalhados e fazer aprovações mais rápidas e embasadas, garantindo o uso eficiente dos recursos públicos.
-![Print do Backlog](imgs-readme/imgs-backlog/Backlog_6.png)  
-</details>
-
-<details> 
-    <summary>7. Atualizações em Tempo Real para Melhor Planejamento Turístico </summary>
+    <summary>5. Atualizações em Tempo Real para Melhor Planejamento Turístico </summary>
 
 - *Como* Carlos, coordenador de turismo da Secretaria de Turismo, *Quero* receber notificações automáticas sobre mudanças na programação de eventos, *Para que* eu possa adaptar os roteiros turísticos em tempo hábil e evitar que turistas sejam impactados por cancelamentos ou alterações inesperadas. Atualmente, a comunicação entre setores é lenta, e mudanças de última hora podem comprometer a experiência dos visitantes. Com esse sistema de notificações, posso ajustar os roteiros rapidamente, garantindo que os turistas aproveitem ao máximo sua estadia na cidade.
 ![Print do Backlog](imgs-readme/imgs-backlog/Backlog_7.png)    
 </details>
 
 <details> 
-    <summary>8. Captação de Investimentos e Parcerias para Projetos Especiais</summary>
+    <summary>6. Captação de Investimentos e Parcerias para Projetos Especiais</summary>
 
 - *Como* Luciana, secretária executiva de projetos especiais do Gabinete do Prefeito, *Quero* acessar uma plataforma consolidada com dados organizados sobre os eventos da cidade, incluindo seu impacto econômico e social, *Para que* eu possa apresentar propostas detalhadas e embasadas a investidores e patrocinadores, aumentando as chances de captação de recursos. Atualmente, a falta de informações quantitativas e qualitativas sobre os eventos dificulta a negociação com empresas e parceiros estratégicos. Com essa solução, posso demonstrar de forma clara o valor dos projetos e atrair mais investimentos para a cultura e o turismo da cidade.
 ![Print do Backlog](imgs-readme/imgs-backlog/Backlog_8.png)     
 </details>
 
 <details> 
-    <summary>9. Prevenção de Conflitos de Agenda e Maximização do Público</summary>
+    <summary>7. Prevenção de Conflitos de Agenda e Maximização do Público</summary>
 
 - *Como* João, gestor cultural da Secretaria de Cultura, *Quero* um sistema de alertas automáticos que identifique conflitos de agenda entre eventos de grande porte, *Para que* eu possa reorganizar os cronogramas e evitar competições desnecessárias pelo público, maximizando o alcance e o impacto de cada evento. Atualmente, a falta de um controle eficiente faz com que eventos importantes ocorram simultaneamente, dividindo o público e reduzindo o retorno financeiro e cultural. Com essa ferramenta, posso planejar melhor os calendários e garantir que cada evento receba o destaque que merece.
 ![Print do Backlog](imgs-readme/imgs-backlog/Backlog_9.png)      
-</details>
-
-<details> 
-    <summary>10. Tomada de Decisão Estratégica Baseada em Dados e Métricas</summary>
-
-- *Como* Eduardo, diretor de planejamento da Secretaria de Cultura, *Quero* uma ferramenta de análise que forneça insights sobre o impacto cultural e financeiro dos eventos ao longo dos anos, *Para que* eu possa tomar decisões estratégicas mais informadas e garantir o crescimento sustentável da cultura na cidade. Atualmente, a falta de dados históricos e previsões dificulta a criação de planos de longo prazo. Com essa solução, posso entender quais tipos de eventos têm maior impacto, onde devemos investir mais e como alinhar a política cultural da cidade às necessidades da população e do setor turístico.
-![Print do Backlog](imgs-readme/imgs-backlog/Backlog_10.png)       
 </details>
 
 ## 🎨 Sketches e Storyboards  
