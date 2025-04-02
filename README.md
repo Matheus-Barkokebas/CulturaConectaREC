@@ -34,9 +34,9 @@ Com o CulturaConecta REC, Recife se torna ainda mais vibrante e acessível, pote
 </details>
 
 <details> 
-    <summary>4. Banco de Dados Centralizado para Divulgação Eficiente</summary>
+    <summary>4. Acesso Privilegiado a Informações para Divulgação Eficiente</summary>
 
-- *Como* Mariana, analista de marketing da prefeitura, *Quero* um banco de dados atualizado e acessível, contendo todas as informações essenciais sobre eventos organizados pela prefeitura, *Para que* eu possa garantir uma divulgação eficiente, evitar atrasos na publicação de informações e minimizar erros causados pela descentralização de dados. Atualmente, preciso buscar detalhes de eventos em diferentes setores, o que consome tempo e prejudica a agilidade da comunicação. Com essa solução, posso atualizar rapidamente o site e as redes sociais oficiais, garantindo que o público tenha acesso a informações precisas e em tempo real.
+- *Como* Mariana, analista de marketing da prefeitura, *Quero* ter acesso a uma aba exclusiva dentro do sistema, onde todas as informações essenciais sobre eventos organizados pela prefeitura estejam disponíveis, *Para que* eu possa garantir uma divulgação eficiente, evitar atrasos na publicação de informações e minimizar erros causados pela descentralização de dados. Atualmente, preciso buscar detalhes de eventos em diferentes setores, o que consome tempo e prejudica a agilidade da comunicação. Com essa solução, posso atualizar rapidamente o site e as redes sociais oficiais, garantindo que o público tenha acesso a informações precisas e em tempo real.
 ![Print do Backlog](imgs-readme/imgs-backlog/Backlog_4.png)   
 
 </details>  
