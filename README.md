@@ -39,14 +39,6 @@ Com o CulturaConecta REC, Recife se torna ainda mais vibrante e acessível, pote
 - *Como* Mariana, analista de marketing da prefeitura, *Quero* ter acesso a uma aba exclusiva dentro do sistema, onde todas as informações essenciais sobre eventos organizados pela prefeitura estejam disponíveis, *Para que* eu possa garantir uma divulgação eficiente, evitar atrasos na publicação de informações e minimizar erros causados pela descentralização de dados. Atualmente, preciso buscar detalhes de eventos em diferentes setores, o que consome tempo e prejudica a agilidade da comunicação. Com essa solução, posso atualizar rapidamente o site e as redes sociais oficiais, garantindo que o público tenha acesso a informações precisas e em tempo real.
 ![Print do Backlog](imgs-readme/imgs-backlog/Backlog_4.png)   
 
-</details>  
-
-<details> 
-    <summary>5. Relatórios de Impacto Cultural e Econômico para Otimizar Investimentos </summary>
-
-- *Como* Eduardo, diretor de planejamento da Secretaria de Cultura, *Quero* acessar relatórios detalhados sobre o impacto econômico e social dos eventos culturais da cidade, *Para que* eu possa justificar investimentos, otimizar recursos e definir estratégias mais eficazes para o desenvolvimento cultural local. Atualmente, a falta de dados concretos sobre a influência dos eventos na economia e na qualidade de vida dos cidadãos torna difícil a alocação inteligente de verbas. Com esses relatórios, posso avaliar quais eventos geram maior retorno e planejar futuras iniciativas culturais de forma mais embasada.
-![Print do Backlog](imgs-readme/imgs-backlog/Backlog_5.png)    
-
 </details>
 
 <details> 
