@@ -49,14 +49,7 @@ Com o CulturaConecta REC, Recife se torna ainda mais vibrante e acessível, pote
 </details>
 
 <details> 
-    <summary>6. Captação de Investimentos e Parcerias para Projetos Especiais</summary>
-
-- *Como* Luciana, secretária executiva de projetos especiais do Gabinete do Prefeito, *Quero* acessar uma plataforma consolidada com dados organizados sobre os eventos da cidade, incluindo seu impacto econômico e social, *Para que* eu possa apresentar propostas detalhadas e embasadas a investidores e patrocinadores, aumentando as chances de captação de recursos. Atualmente, a falta de informações quantitativas e qualitativas sobre os eventos dificulta a negociação com empresas e parceiros estratégicos. Com essa solução, posso demonstrar de forma clara o valor dos projetos e atrair mais investimentos para a cultura e o turismo da cidade.
-![Print do Backlog](imgs-readme/imgs-backlog/Backlog_6.png)     
-</details>
-
-<details> 
-    <summary>7. Prevenção de Conflitos de Agenda e Maximização do Público</summary>
+    <summary>6. Prevenção de Conflitos de Agenda e Maximização do Público</summary>
 
 - *Como* João, gestor cultural da Secretaria de Cultura, *Quero* um sistema de alertas automáticos que identifique conflitos de agenda entre eventos de grande porte, *Para que* eu possa reorganizar os cronogramas e evitar competições desnecessárias pelo público, maximizando o alcance e o impacto de cada evento. Atualmente, a falta de um controle eficiente faz com que eventos importantes ocorram simultaneamente, dividindo o público e reduzindo o retorno financeiro e cultural. Com essa ferramenta, posso planejar melhor os calendários e garantir que cada evento receba o destaque que merece.
 ![Print do Backlog](imgs-readme/imgs-backlog/Backlog_7.png)      
