@@ -1,5 +1,7 @@
 package cesar.ccr.com.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,29 +17,30 @@ public class Usuario {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "usuario_id")
-    private Long idUsuario;
+    @Column(name = "id")
+    private Long id;
     
-    @Column(name = "usuario_nome")
+    @Column(name = "nome")
     private String nome;
     
-    @Column(name = "usuario_cpf")
+    @Column(name = "cpf")
     private String cpf;
     
-    @Column(name = "usuario_email")
+    @Column(name = "email")
     private String email;
     
-    @Column(name = "usuario_senha")
+    @Column(name = "senha")
     private String senha;
     
-    @Column(name = "usuario_cargo")
+    @Column(name = "cargo")
     private String cargo;
     
     @ManyToOne
-    @JoinColumn(name = "secretaria_id")
+    @JoinColumn(name = "id_secretaria")
+    @JsonIgnore
     private Secretaria secretaria;
     
-    @Column(name = "usuario_permissao")
+    @Column(name = "permissao")
     private String permissao;
 }
 
