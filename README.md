@@ -58,7 +58,7 @@ Com o CulturaConecta REC, Recife se torna ainda mais vibrante e acessível, pote
 ## 🎨 Sketches e Storyboards  
 📌 **Storyboard:**
 
-![StoryBoard](imgs-readme/storybord.jpg)
+<a href="https://trello.com/invite/b/67edc68a1f86e3f7160b0399/ATTIe4a7a7f885745a65c1b27b3a1a30a42dF6BB598D/conectaculturarec" target="_blank">Link do Trello</a>
 
 📌 **Sketche:**  
 
@@ -83,3 +83,5 @@ Luiz Eduardo - lemm@cesar.school
 Pedro Pessoa - ppb2@cesar.school
 
 Lucas Canto - lcss@cesar.school
+
+Lucas Nery Sereno - lns3@cesar.school
