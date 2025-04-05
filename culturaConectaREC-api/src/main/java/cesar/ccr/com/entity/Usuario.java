@@ -21,6 +21,9 @@ public class Usuario {
     @Column(name = "usuario_nome")
     private String nome;
     
+    @Column(name = "usuario_cpf")
+    private String cpf;
+    
     @Column(name = "usuario_email")
     private String email;
     
