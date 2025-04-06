@@ -1,7 +1,5 @@
 package cesar.ccr.com.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -37,7 +35,6 @@ public class Usuario {
     
     @ManyToOne
     @JoinColumn(name = "id_secretaria")
-    @JsonIgnore
     private Secretaria secretaria;
     
     @Column(name = "permissao")

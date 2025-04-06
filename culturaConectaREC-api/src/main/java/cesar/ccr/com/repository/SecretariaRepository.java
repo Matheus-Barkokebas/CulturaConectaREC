@@ -6,4 +6,5 @@ import cesar.ccr.com.entity.Secretaria;
 
 public interface SecretariaRepository extends JpaRepository<Secretaria, Long>{
 
+	boolean existsByNome(final String nome);
 }
