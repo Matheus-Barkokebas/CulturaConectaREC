@@ -62,7 +62,7 @@ Com o CulturaConecta REC, Recife se torna ainda mais vibrante e acessível, pote
 
 📌 **Sketche:**  
 
-  ![Sketch 1](imgs-readme/sketche.png)
+  ![Sketch 1](imgs-readme/Sketche.png)
 
 ## 🎥 Apresentação em Vídeo  
 📌 **Screencast demonstrando o protótipo:**  
