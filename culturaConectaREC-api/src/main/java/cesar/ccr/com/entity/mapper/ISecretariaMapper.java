@@ -22,6 +22,8 @@ public interface ISecretariaMapper {
 	
 	SecretariaDto toSaveResponse(final Secretaria entity);
 	
+	SecretariaDto toUpdateResponse(final Secretaria entity);
+	
 	SecretariaDto toDetailResponse(final Secretaria entity);
 	
 	List<Secretaria> toListResponse(final List<Secretaria> entities);

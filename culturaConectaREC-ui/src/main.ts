@@ -1,6 +1,18 @@
+import { provideHttpClient } from '@angular/common/http';
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
+import { provideRouter, Routes } from '@angular/router';
 import { AppComponent } from './app/app.component';
 
-bootstrapApplication(AppComponent, appConfig)
-  .catch((err) => console.error(err));
+const routes: Routes = [
+  {
+    path: 'cadastrarSecretaria',
+    loadComponent: () => import('./app/secretaria/secretaria.models').then(m => m.SecretariaModelForm),
+  },
+];
+
+bootstrapApplication(AppComponent, {
+  providers: [
+    provideHttpClient(),
+    provideRouter(routes)
+  ]
+});
