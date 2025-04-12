@@ -1,0 +1,36 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let evento of paginatedEventos">
+      <mat-card class="evento-card h-100">
+        <mat-card-title>{{ evento.nome }}</mat-card-title>
+        <mat-card-subtitle>
+          {{ evento.secretariaResponsavel.nome }} - {{ evento.tipo }}
+        </mat-card-subtitle>
+
+        <mat-card-content>
+          <p><strong>Descrição:</strong> {{ evento.descricao }}</p>
+          <p><strong>Localização:</strong> {{ evento.localizacao }}</p>
+          <p><strong>Status:</strong> {{ evento.status }}</p>
+          <p><strong>Início:</strong> {{ evento.dataInicio }}</p>
+          <p><strong>Fim:</strong> {{ evento.dataFim }}</p>
+        </mat-card-content>
+
+        <mat-card-actions>
+          <button mat-icon-button color="primary" matTooltip="Editar" (click)="update(evento)">
+            <mat-icon>edit</mat-icon>
+          </button>
+
+          <button mat-icon-button color="warn" matTooltip="Excluir" (click)="delete(evento)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+
+  <div class="pagination-controls text-center mt-3">
+    <button mat-button (click)="prevPage()" [disabled]="currentPage === 0">Anterior</button>
+    <span>Página {{ currentPage + 1 }} de {{ totalPages }}</span>
+    <button mat-button (click)="nextPage()" [disabled]="currentPage + 1 >= totalPages">Próxima</button>
+  </div>
+</div>

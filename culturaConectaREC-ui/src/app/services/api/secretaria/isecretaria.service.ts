@@ -1,15 +1,14 @@
-import { Observable } from "rxjs";
-import { SaveSecretariaDto, SecretariaDto } from "./secretaria.models";
+import { Observable } from 'rxjs';
+import { SaveSecretariaDto, SecretariaDto } from './secretaria.models';
 
-export interface ISecretariaService{
+export interface ISecretariaService {
+  save(request: SaveSecretariaDto): Observable<SaveSecretariaDto>;
 
-    save(request: SaveSecretariaDto): Observable<SaveSecretariaDto>
+  update(id: number, request: SecretariaDto): Observable<SecretariaDto>;
 
-    update(id: number, request: SecretariaDto): Observable<SecretariaDto>
+  delete(id: number): Observable<void>;
 
-    delete(id: number): Observable<void>
+  list(): Observable<SecretariaDto[]>;
 
-    list(): Observable<SecretariaDto[]>
-
-    findByID(id: number): Observable<SecretariaDto>
+  findByID(id: number): Observable<SecretariaDto>;
 }

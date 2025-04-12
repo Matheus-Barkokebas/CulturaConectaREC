@@ -16,11 +16,15 @@ public interface ISecretariaMapper {
 
 	ISecretariaMapper INSTANCE = Mappers.getMapper(ISecretariaMapper.class);
 	
+    @Mapping(target = "id", ignore = true)
+	@Mapping(source = "nome", target = "nome")
+	Secretaria toEntity(final SecretariaDto dto);
+    
+    SecretariaDto toSaveResponse(final Secretaria entity);
+	
 	@Mapping(source = "id", target = "id")
 	@Mapping(source = "nome", target = "nome")
-	Secretaria toDto(final SecretariaDto dto);
-	
-	SecretariaDto toSaveResponse(final Secretaria entity);
+	SecretariaDto toDto(final Secretaria entity);
 	
 	SecretariaDto toUpdateResponse(final Secretaria entity);
 	

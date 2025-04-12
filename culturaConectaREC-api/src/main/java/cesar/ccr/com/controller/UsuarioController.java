@@ -5,6 +5,7 @@ import static org.springframework.http.HttpStatus.NO_CONTENT;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,8 +24,9 @@ import cesar.ccr.com.service.query.impl.UsuarioQueryService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("usuarios")
+@RequestMapping("/usuarios")
 @AllArgsConstructor
 public class UsuarioController {
 
@@ -37,15 +39,15 @@ public class UsuarioController {
 	@PostMapping
 	@ResponseStatus(CREATED)
 	UsuarioDto save(@RequestBody @Valid final UsuarioDto dto) {
-		var entity = mapper.toDto(dto);
+		var entity = mapper.toEntity(dto);
 		service.save(entity);
 		return mapper.toSaveResponse(entity);
 	}
 	
 	@PutMapping("{id}")
 	UsuarioDto update (@PathVariable("id") final long id, @RequestBody @Valid final UsuarioDto dto) {
-		var entity = mapper.toDto(dto);
-		service.update(entity);
+		var entity = mapper.toEntity(dto);
+		service.update(id, entity);
 		return mapper.toUpdateResponse(entity);
 	}
 	
@@ -61,7 +63,7 @@ public class UsuarioController {
 		return mapper.toDetailResponse(entity);
 	}
 	
-	@GetMapping("{cpf}")
+	@GetMapping("/cpf/{cpf}")
 	UsuarioDto findByCpf(@PathVariable("cpf") final String cpf) {
 		var entity = queryService.findByCpf(cpf);
 		return mapper.toDetailResponse(entity);

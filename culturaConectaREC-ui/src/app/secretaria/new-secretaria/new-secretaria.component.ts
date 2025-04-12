@@ -1,4 +1,10 @@
-import { Component, Inject, OnDestroy } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Inject,
+  OnDestroy,
+  Output,
+} from '@angular/core';
 import { SnackbarManagerService } from '../../services/snackbar-manager.service';
 import { SecretariaService } from '../../services/api/secretaria/secretaria.service';
 import { SERVICES_TOKEN } from '../../services/service.token';
@@ -7,8 +13,8 @@ import { Subscription } from 'rxjs';
 import { ISecretariaService } from '../../services/api/secretaria/isecretaria.service';
 import { ISnackbarManagerService } from '../../services/isnackbar-manager.service';
 import { Router } from '@angular/router';
-import { SecretariaModelForm } from '../secretaria.models';
-import {MatTabsModule} from '@angular/material/tabs';
+import { MatTabsModule } from '@angular/material/tabs';
+import { Secretaria } from '../secretaria.models';
 
 @Component({
   selector: 'app-new-secretaria',
@@ -20,9 +26,10 @@ import {MatTabsModule} from '@angular/material/tabs';
     { provide: SERVICES_TOKEN.SNACKBAR, useClass: SnackbarManagerService },
   ],
 })
-export class NewSecretariaComponent implements OnDestroy{
-
+export class NewSecretariaComponent implements OnDestroy {
   private httpSubscription?: Subscription;
+
+  @Output() savedSecretaria = new EventEmitter();
 
   constructor(
     @Inject(SERVICES_TOKEN.HTTP.SECRETARIA)
@@ -38,12 +45,11 @@ export class NewSecretariaComponent implements OnDestroy{
     }
   }
 
-  onSubmitSecretaria(value: SecretariaModelForm) {
-    const { id, ...request } = value;
-    this.httpSubscription = this.httpService.save(request).subscribe((_) => {
+  onSubmitSecretaria(value: Secretaria) {
+    this.httpSubscription = this.httpService.save(value).subscribe((_) => {
       this.snackBarManager.show('secretaria cadastrado com sucesso');
-      this.router.navigate(['secretaria/list']);
+
+      this.savedSecretaria.emit();
     });
   }
-
 }

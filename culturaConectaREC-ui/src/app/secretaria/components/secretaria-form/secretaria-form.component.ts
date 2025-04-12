@@ -3,28 +3,23 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
-import { NgxMaskDirective } from 'ngx-mask';
-import { SecretariaModelForm } from '../../secretaria.models';
+import { Secretaria } from '../../secretaria.models';
 
 @Component({
   selector: 'app-secretaria-form',
-  imports: [
-    FormsModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatButtonModule],
+  imports: [FormsModule, MatInputModule, MatFormFieldModule, MatButtonModule],
   templateUrl: './secretaria-form.component.html',
-  styleUrl: './secretaria-form.component.scss'
+  styleUrl: './secretaria-form.component.scss',
 })
 export class SecretariaFormComponent {
+  @Input() secretaria: Secretaria = {
+    id: 0,
+    nome: '',
+  };
 
-  @Input() secretaria: SecretariaModelForm = {
-    nome: ''
-  }
+  @Output() secretariaSubmited = new EventEmitter<Secretaria>();
 
-  @Output() secretariaSubmited = new EventEmitter<SecretariaModelForm>();
-
-  onSubmit(_: NgForm){
+  onSubmit(_: NgForm) {
     this.secretariaSubmited.emit(this.secretaria);
   }
 }

@@ -16,6 +16,18 @@ public interface IUsuarioMapper {
 
 	IUsuarioMapper INSTANCE = Mappers.getMapper(IUsuarioMapper.class);
 
+	@Mapping(target = "id", ignore = true)
+	@Mapping(source = "nome", target = "nome")
+	@Mapping(source = "cpf", target = "cpf")
+	@Mapping(source = "email", target = "email")
+	@Mapping(source = "senha", target = "senha")
+	@Mapping(source = "cargo", target = "cargo")
+	@Mapping(source = "secretaria", target = "secretaria")
+	@Mapping(source = "permissao", target = "permissao")
+	Usuario toEntity(final UsuarioDto dto);
+
+	UsuarioDto toSaveResponse(final Usuario entity);
+	
 	@Mapping(source = "id", target = "id")
 	@Mapping(source = "nome", target = "nome")
 	@Mapping(source = "cpf", target = "cpf")
@@ -24,9 +36,7 @@ public interface IUsuarioMapper {
 	@Mapping(source = "cargo", target = "cargo")
 	@Mapping(source = "secretaria", target = "secretaria")
 	@Mapping(source = "permissao", target = "permissao")
-	Usuario toDto(final UsuarioDto dto);
-	
-	UsuarioDto toSaveResponse(final Usuario entity);
+	UsuarioDto toDto(final Usuario entity);
 
 	UsuarioDto toUpdateResponse(final Usuario entity);
 	

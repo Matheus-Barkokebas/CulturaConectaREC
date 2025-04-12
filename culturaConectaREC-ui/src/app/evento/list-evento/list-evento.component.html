@@ -1,0 +1,8 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <app-evento-table [eventos]="evento" (onConfirmDelete)="delete($event)"
+        (onRequestUpdate)="update($event)"></app-evento-table>
+    </div>
+  </div>
+</div>

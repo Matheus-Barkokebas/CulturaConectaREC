@@ -1,8 +1,15 @@
 package cesar.ccr.com.entity;
 
-import jakarta.persistence.*;
+import java.time.OffsetDateTime;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.Data;
-import java.time.LocalDate;
 
 @Entity
 @Data
@@ -10,32 +17,32 @@ public class Evento {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "evento_id")
-    private Long idEvento;
+    @Column(name = "id")
+    private Long id;
     
-    @Column(name = "evento_nome")
+    @Column(name = "enome")
     private String nome;
     
-    @Column(name = "evento_descricao")
+    @Column(name = "descricao")
     private String descricao;
     
-    @Column(name = "evento_data_inicio")
-    private LocalDate dataInicio;
+    @Column(name = "data_inicio")
+    private OffsetDateTime dataInicio;
     
-    @Column(name = "evento_data_final")
-    private LocalDate dataFim;
+    @Column(name = "data_final")	
+    private OffsetDateTime dataFim;
     
-    @Column(name = "evento_localizacao")
+    @Column(name = "localizacao")
     private String localizacao;
     
-    @Column(name = "evento_tipo")
+    @Column(name = "tipo")
     private String tipo;
     
-    @Column(name = "evento_status")
+    @Column(name = "eve_status")
     private String status;
     
     @ManyToOne
-    @JoinColumn(name = "secretaria_responsavel_id")
+    @JoinColumn(name = "secretaria_responsavel")
     private Secretaria secretariaResponsavel;
 }
 

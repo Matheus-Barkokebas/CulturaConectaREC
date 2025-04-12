@@ -8,9 +8,8 @@ import { MatDialogModule } from '@angular/material/dialog';
   standalone: true,
   imports: [MatButtonModule, MatDialogModule],
   templateUrl: './yes-no-dialog.component.html',
-  styleUrl: './yes-no-dialog.component.scss'
+  styleUrl: './yes-no-dialog.component.scss',
 })
 export class YesNoDialogComponent {
-
-  constructor(@Inject(MAT_DIALOG_DATA) readonly data: any) { }
+  constructor(@Inject(MAT_DIALOG_DATA) readonly data: any) {}
 }

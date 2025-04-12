@@ -1,0 +1,8 @@
+<mat-tab-group selectedIndex="{{currentIndex}}">
+  <mat-tab label="Cadastrar Usuarios">
+    <app-new-usuario (savedUser)="changeTabToListUser()"></app-new-usuario>
+  </mat-tab>
+  <mat-tab label="Visualizar Usuarios">
+    <app-list-usuario [usuario]="usuario"></app-list-usuario>
+  </mat-tab>
+</mat-tab-group>

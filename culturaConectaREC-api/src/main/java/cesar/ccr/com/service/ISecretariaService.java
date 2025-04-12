@@ -6,7 +6,7 @@ public interface ISecretariaService{
 
 	Secretaria save(final Secretaria entity);
 	
-	Secretaria update(final Secretaria entity);
+	Secretaria update(final long id, final Secretaria entity);
 	
 	void delete(final long id);
 }

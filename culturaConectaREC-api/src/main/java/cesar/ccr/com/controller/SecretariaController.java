@@ -17,9 +17,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import cesar.ccr.com.controller.dto.SecretariaDto;
-import cesar.ccr.com.controller.dto.UsuarioDto;
 import cesar.ccr.com.entity.Secretaria;
-import cesar.ccr.com.entity.Usuario;
 import cesar.ccr.com.entity.mapper.ISecretariaMapper;
 import cesar.ccr.com.service.impl.SecretariaService;
 import cesar.ccr.com.service.query.impl.SecretariaQueryService;
@@ -28,7 +26,7 @@ import lombok.AllArgsConstructor;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/cadastrarSecretaria")
+@RequestMapping("/secretaria")
 @AllArgsConstructor
 public class SecretariaController {
 
@@ -41,15 +39,15 @@ public class SecretariaController {
 	@PostMapping
 	@ResponseStatus(CREATED)
 	SecretariaDto save(@RequestBody @Valid final SecretariaDto dto) {
-		var entity = mapper.toDto(dto);
+		var entity = mapper.toEntity(dto);
 		service.save(entity);
 		return mapper.toSaveResponse(entity);
 	}
 	
 	@PutMapping("{id}")
 	SecretariaDto update (@PathVariable("id") final long id, @RequestBody @Valid final SecretariaDto dto) {
-		var entity = mapper.toDto(dto);
-		service.update(entity);
+		var entity = mapper.toEntity(dto);
+		service.update(id, entity);
 		return mapper.toUpdateResponse(entity);
 	}
 	

@@ -25,10 +25,8 @@ public class SecretariaService implements ISecretariaService{
 	}
 	
 	@Override
-	public Secretaria update(Secretaria entity) {
-		queryService.findById(entity.getId());
-		
-		var stored = queryService.findById(entity.getId()); 
+	public Secretaria update(long id, Secretaria entity) {
+		var stored = queryService.findById(id); 
 		stored.setNome(entity.getNome());
 		
 		return repository.save(stored);

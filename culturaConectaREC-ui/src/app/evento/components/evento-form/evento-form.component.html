@@ -1,0 +1,83 @@
+<form #form="ngForm" (ngSubmit)="onSubmit(form)" class="container mt-4">
+  <div class="row mb-3">
+    <div class="col-md-4">
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Nome</mat-label>
+        <input matInput name="nome" #nomeModel="ngModel" [(ngModel)]="evento.nome" required>
+        <mat-error *ngIf="nomeModel.hasError('required')">Informe o nome do Usuário</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-md-4">
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Descrição</mat-label>
+        <input matInput name="descricao" #descricaoModel="ngModel" [(ngModel)]="evento.descricao" required>
+        <mat-error *ngIf="descricaoModel.hasError('required')">Informe uma descrição para o evento</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-md-4">
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Tipo</mat-label>
+        <input matInput name="tipo" #tipoModel="ngModel" [(ngModel)]="evento.tipo" required>
+        <mat-error *ngIf="tipoModel.hasError('required')">Informe o tipo do Evento</mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-md-4">
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Data de Início</mat-label>
+        <input matInput [matDatepicker]="pickerInicio" name="dataInicio" #dataInicioModel="ngModel"
+          [(ngModel)]="evento.dataInicio" required>
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="pickerInicio"></mat-datepicker-toggle>
+        <mat-datepicker #pickerInicio></mat-datepicker>
+        <mat-error *ngIf="dataInicioModel.hasError('required')">
+          Informe a data de início do Evento
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-4">
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Data de Finalização</mat-label>
+        <input matInput [matDatepicker]="pickerFim" name="dataFim" #dataFimModel="ngModel" [(ngModel)]="evento.dataFim"
+          required>
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="pickerFim"></mat-datepicker-toggle>
+        <mat-datepicker #pickerFim></mat-datepicker>
+        <mat-error *ngIf="dataFimModel.hasError('required')">
+          Informe a data de finalização do Evento
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-md-4">
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Localização</mat-label>
+        <input matInput name="localizacao" #localizacaoModel="ngModel" [(ngModel)]="evento.localizacao" required>
+        <mat-error *ngIf="localizacaoModel.hasError('required')">Informe a localização do Evento</mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-md-4">
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Status</mat-label>
+        <input matInput name="status" #statusModel="ngModel" [(ngModel)]="evento.status" required>
+        <mat-error *ngIf="statusModel.hasError('required')">Informe o status do Evento</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-md-4">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Secretaria</mat-label>
+        <mat-select [(ngModel)]="evento.secretariaResponsavel" name="secretaria" required>
+          <mat-option *ngFor="let secretaria of secretarias" [value]="secretaria">
+            {{ secretaria.nome }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <button type="submit" mat-flat-button color="primary" [disabled]="form.invalid">Salvar</button>
+</form>

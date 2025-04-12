@@ -16,7 +16,7 @@ public class UsuarioService implements IUsuarioService {
 	private final IUsuarioQueryService queryService;
 
 	@Override
-	public Usuario save(final Usuario entity) {
+	public Usuario save(Usuario entity) {
 		queryService.verifyCpf(entity.getCpf());
 		queryService.verifyEmail(entity.getEmail());
 		
@@ -24,22 +24,21 @@ public class UsuarioService implements IUsuarioService {
 	}
 
 	@Override
-	public Usuario update(final Usuario entity) {
-		queryService.verifyCpf(entity.getId(), entity.getCpf());
-		queryService.verifyEmail(entity.getId(), entity.getEmail());
-		
-		var stored = queryService.findById(entity.getId());
+	public Usuario update(long id, Usuario entity) {
+		var stored = queryService.findById(id);	
 		stored.setNome(entity.getNome());
+		stored.setCpf(entity.getCpf());
 		stored.setEmail(entity.getEmail());
 		stored.setSenha(entity.getSenha());
 		stored.setCargo(entity.getCargo());
+		stored.setSecretaria(entity.getSecretaria());
 		stored.setPermissao(entity.getPermissao());
 		
 		return repository.save(stored);
 	}
 
 	@Override
-	public void delete(final long id) {
+	public void delete(long id) {
 		queryService.findById(id);
 		repository.deleteById(id);
 
