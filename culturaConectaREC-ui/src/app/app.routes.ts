@@ -11,6 +11,7 @@ import { EditEventoComponent } from './evento/edit-evento/edit-evento.component'
 import { EditUsuarioComponent } from './usuario/edit-usuario/edit-usuario.component';
 import { NewUsuarioComponent } from './usuario/new-usuario/new-usuario.component';
 import { ListUsuarioComponent } from './usuario/list-usuario/list-usuario.component';
+import { CalendarioComponent } from './calendario/calendario.component';
 
 export const routes: Routes = [
 
@@ -31,4 +32,6 @@ export const routes: Routes = [
   { path: 'list/evento', component: ListEventoComponent, data: { title: 'Listar Evento' } },
   { path: 'edit/evento/:id', component: EditEventoComponent, data: { title: 'Editar Eventos' } },
 
+   //CALENDARIO ROUTES
+   { path: 'calendario', component: CalendarioComponent, data: { title: 'Calendario' } },
 ];
