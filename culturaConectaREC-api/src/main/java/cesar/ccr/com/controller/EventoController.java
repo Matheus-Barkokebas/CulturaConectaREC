@@ -5,6 +5,7 @@ import static org.springframework.http.HttpStatus.NO_CONTENT;
 
 import java.util.List;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,6 +37,7 @@ public class EventoController {
 	
 	private IEventoMapper mapper;
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping
 	@ResponseStatus(CREATED)
 	EventoDto save(@RequestBody @Valid final EventoDto dto) {
@@ -44,6 +46,7 @@ public class EventoController {
 		return mapper.toSaveResponse(entity);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("{id}")
 	EventoDto update (@PathVariable("id") final long id, @RequestBody @Valid final EventoDto dto) {
 		var entity = mapper.toEntity(dto);
@@ -51,6 +54,7 @@ public class EventoController {
 		return mapper.toUpdateResponse(entity);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("{id}")
 	@ResponseStatus(NO_CONTENT)
 	void delete(@PathVariable("id") final long id) {

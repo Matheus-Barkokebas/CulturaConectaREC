@@ -2,7 +2,6 @@ package cesar.ccr.com.controller.dto;
 
 import java.time.OffsetDateTime;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import cesar.ccr.com.entity.Secretaria;

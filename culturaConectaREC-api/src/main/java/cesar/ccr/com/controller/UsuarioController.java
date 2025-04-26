@@ -5,6 +5,7 @@ import static org.springframework.http.HttpStatus.NO_CONTENT;
 
 import java.util.List;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,11 +32,12 @@ import lombok.AllArgsConstructor;
 public class UsuarioController {
 
 	private UsuarioService service;
-	
+
 	private UsuarioQueryService queryService;
-	
+
 	private IUsuarioMapper mapper;
-	
+
+	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping
 	@ResponseStatus(CREATED)
 	UsuarioDto save(@RequestBody @Valid final UsuarioDto dto) {
@@ -43,36 +45,41 @@ public class UsuarioController {
 		service.save(entity);
 		return mapper.toSaveResponse(entity);
 	}
-	
+
+	@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("{id}")
-	UsuarioDto update (@PathVariable("id") final long id, @RequestBody @Valid final UsuarioDto dto) {
+	UsuarioDto update(@PathVariable("id") final long id, @RequestBody @Valid final UsuarioDto dto) {
 		var entity = mapper.toEntity(dto);
 		service.update(id, entity);
 		return mapper.toUpdateResponse(entity);
 	}
-	
+
+	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("{id}")
 	@ResponseStatus(NO_CONTENT)
 	void delete(@PathVariable("id") final long id) {
-	    service.delete(id);
+		service.delete(id);
 	}
-	
+
+	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("{id}")
 	UsuarioDto findById(@PathVariable("id") final long id) {
 		var entity = queryService.findById(id);
 		return mapper.toDetailResponse(entity);
 	}
-	
+
+	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/cpf/{cpf}")
 	UsuarioDto findByCpf(@PathVariable("cpf") final String cpf) {
 		var entity = queryService.findByCpf(cpf);
 		return mapper.toDetailResponse(entity);
 	}
-	
+
+	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping
-	List<Usuario> list(){
+	List<Usuario> list() {
 		var entities = queryService.list();
 		return mapper.toListResponse(entities);
 	}
-	
+
 }

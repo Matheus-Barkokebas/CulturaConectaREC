@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import cesar.ccr.com.entity.Usuario;
+import cesar.ccr.com.entity.enums.Permissoes;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 	
@@ -16,4 +17,5 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 	
 	Optional<Usuario> findByEmail(final String email);
 
+	Optional<Usuario> findByPermissao(final Permissoes perm);
 }

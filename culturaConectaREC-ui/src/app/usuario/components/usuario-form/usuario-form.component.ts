@@ -1,12 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  Inject,
-  Input,
-  OnDestroy,
-  OnInit,
-  Output,
-} from '@angular/core';
+import { Component, EventEmitter, Inject, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Usuario } from '../../usuario.model';
 import { MatInputModule } from '@angular/material/input';
@@ -24,6 +16,7 @@ import { ISnackbarManagerService } from '../../../services/isnackbar-manager.ser
 import { MatTableModule } from '@angular/material/table';
 import { ISecretariaService } from '../../../services/api/secretaria/isecretaria.service';
 import { SecretariaService } from '../../../services/api/secretaria/secretaria.service';
+import { Permissoes } from '../../../services/api/usuario/usuario.models';
 
 @Component({
   selector: 'app-usuario-form',
@@ -49,6 +42,8 @@ export class UsuarioFormComponent implements OnInit, OnDestroy {
 
   secretarias: Secretaria[] = [];
 
+  permissoes = Object.values(Permissoes);
+
   constructor(
     @Inject(SERVICES_TOKEN.HTTP.SECRETARIA)
     private readonly httpServiceSecretaria: ISecretariaService,
@@ -67,7 +62,7 @@ export class UsuarioFormComponent implements OnInit, OnDestroy {
       id: 0,
       nome: '',
     },
-    permissao: '',
+    permissao: Permissoes.ROLE_USER,
   };
 
   @Output() usuarioSubmited = new EventEmitter<Usuario>();
@@ -83,6 +78,7 @@ export class UsuarioFormComponent implements OnInit, OnDestroy {
         .subscribe((data) => (this.secretarias = data))
     );
   }
+
   ngOnDestroy(): void {
     this.httpSubscriptions.forEach((s) => s.unsubscribe());
   }

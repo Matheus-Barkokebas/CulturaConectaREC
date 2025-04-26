@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import cesar.ccr.com.entity.Evento;
 import cesar.ccr.com.repository.EventoRepository;
-import cesar.ccr.com.repository.SecretariaRepository;
 import cesar.ccr.com.service.query.IEventoQueryService;
 import lombok.AllArgsConstructor;
 

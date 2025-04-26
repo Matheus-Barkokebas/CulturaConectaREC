@@ -5,6 +5,7 @@ import static org.springframework.http.HttpStatus.NO_CONTENT;
 
 import java.util.List;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,6 +37,7 @@ public class SecretariaController {
 	
 	private ISecretariaMapper mapper;
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping
 	@ResponseStatus(CREATED)
 	SecretariaDto save(@RequestBody @Valid final SecretariaDto dto) {
@@ -44,6 +46,7 @@ public class SecretariaController {
 		return mapper.toSaveResponse(entity);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@PutMapping("{id}")
 	SecretariaDto update (@PathVariable("id") final long id, @RequestBody @Valid final SecretariaDto dto) {
 		var entity = mapper.toEntity(dto);
@@ -51,18 +54,21 @@ public class SecretariaController {
 		return mapper.toUpdateResponse(entity);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@DeleteMapping("{id}")
 	@ResponseStatus(NO_CONTENT)
 	void delete(@PathVariable("id") final long id) {
 	    service.delete(id);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("{id}")
 	SecretariaDto findById(@PathVariable("id") final long id) {
 		var entity = queryService.findById(id);
 		return mapper.toDetailResponse(entity);
 	}
 	
+	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping
 	List<Secretaria> list(){
 		var entities = queryService.list();

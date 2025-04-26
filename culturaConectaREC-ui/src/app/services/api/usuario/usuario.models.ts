@@ -1,5 +1,10 @@
 import { Secretaria } from '../../../secretaria/secretaria.models';
 
+export enum Permissoes {
+  ROLE_ADMIN = 'ROLE_ADMIN',
+  ROLE_USER = 'ROLE_USER'
+}
+
 export class UsuarioDto {
   id: number;
   nome: string;
@@ -8,7 +13,7 @@ export class UsuarioDto {
   senha: string;
   cargo: string;
   secretaria: Secretaria;
-  permissao: string;
+  permissao: Permissoes;
 
   constructor(
     id: number,
@@ -18,7 +23,7 @@ export class UsuarioDto {
     senha: string,
     cargo: string,
     secretaria: Secretaria,
-    permissao: string
+    permissao: Permissoes
   ) {
     this.id = id;
     this.nome = nome;

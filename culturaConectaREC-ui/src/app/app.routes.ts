@@ -12,8 +12,15 @@ import { EditUsuarioComponent } from './usuario/edit-usuario/edit-usuario.compon
 import { NewUsuarioComponent } from './usuario/new-usuario/new-usuario.component';
 import { ListUsuarioComponent } from './usuario/list-usuario/list-usuario.component';
 import { CalendarioComponent } from './calendario/calendario.component';
+import { LoginComponent } from './login/login.component';
 
 export const routes: Routes = [
+
+  // ROTA PADRÃO
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+
+  //LOGIN ROUTES
+  { path: 'login', component: LoginComponent, data: { title: 'Login' } },
 
   //SECRETARIA ROUTES
   { path: 'new/secretaria', component: NewSecretariaComponent, data: { title: 'Cadastrar secretaria' } },

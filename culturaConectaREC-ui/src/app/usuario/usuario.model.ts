@@ -1,4 +1,5 @@
 import { Secretaria } from '../secretaria/secretaria.models';
+import { Permissoes } from '../services/api/usuario/usuario.models';
 
 export class Usuario {
   id: number;
@@ -8,7 +9,7 @@ export class Usuario {
   senha: string;
   cargo: string;
   secretaria: Secretaria;
-  permissao: string;
+  permissao: Permissoes;
 
   constructor(
     id: number,
@@ -18,7 +19,7 @@ export class Usuario {
     senha: string,
     cargo: string,
     secretaria: Secretaria,
-    permissao: string
+    permissao: Permissoes
   ) {
     this.id = id;
     this.nome = nome;

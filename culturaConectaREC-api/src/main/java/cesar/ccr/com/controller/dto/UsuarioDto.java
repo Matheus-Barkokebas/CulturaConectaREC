@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import cesar.ccr.com.entity.Secretaria;
+import cesar.ccr.com.entity.enums.Permissoes;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 
@@ -31,5 +32,5 @@ public record UsuarioDto(
 		Secretaria secretaria,
 		@NotNull
 		@JsonProperty("permissao")
-		String permissao
+		Permissoes permissao
 		){}

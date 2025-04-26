@@ -9,5 +9,4 @@ public class CulturaConectaRecApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CulturaConectaRecApplication.class, args);
 	}
-
 }

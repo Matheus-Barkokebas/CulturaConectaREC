@@ -8,6 +8,7 @@ import { IUsuarioService } from '../../services/api/usuario/iusuario.service';
 import { ISnackbarManagerService } from '../../services/isnackbar-manager.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { Permissoes } from '../../services/api/usuario/usuario.models';
 
 @Component({
   selector: 'app-edit-usuario',
@@ -33,7 +34,7 @@ export class EditUsuarioComponent implements OnInit, OnDestroy {
       id: 0,
       nome: '',
     },
-    permissao: '',
+    permissao: Permissoes.ROLE_USER,
   };
 
   constructor(

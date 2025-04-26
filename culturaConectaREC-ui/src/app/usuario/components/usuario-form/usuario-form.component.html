@@ -51,11 +51,12 @@
   </div>
   <div class="row mb-4">
     <div class="col-md-4">
-      <mat-form-field>
+      <mat-form-field appearance="fill" class="w-100">
         <mat-label>Permissão</mat-label>
-        <mat-select>
-          <mat-option value="one">First option</mat-option>
-          <mat-option value="two">Second option</mat-option>
+        <mat-select [(ngModel)]="usuario.permissao" name="permissao" required>
+          <mat-option *ngFor="let permissao of permissoes" [value]="permissao">
+            {{ permissao }}
+          </mat-option>
         </mat-select>
       </mat-form-field>
     </div>
