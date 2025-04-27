@@ -68,6 +68,107 @@ Com o CulturaConecta REC, Recife se torna ainda mais vibrante e acessível, pote
 📌 **Screencast demonstrando o protótipo:**  
 <a href="https://youtu.be/lI1i66PZlaw" target="_blank">Link do Vídeo do Protótipo</a>
 
+## DIAGRAMAS
+### 📌 Diagrama de Classes
+
+```mermaid
+classDiagram
+    class Usuario {
+        +Long id
+        +String nome
+        +String cpf
+        +String email
+        +String senha
+        +String cargo
+        +Permissoes permissao
+    }
+
+    class Secretaria {
+        +Long id
+        +String nome
+    }
+
+    class Evento {
+        +Long id
+        +String nome
+        +String descricao
+        +OffsetDateTime dataInicio
+        +OffsetDateTime dataFim
+        +String localizacao
+        +String tipo
+        +String status
+    }
+
+    class Permissoes {
+        <<ENUM>>
+        ROLE_ADMIN
+        ROLE_USER
+    }
+
+    Usuario --> Secretaria : pertence à
+    Usuario --> Permissoes : possui
+    Evento --> Secretaria : secretariaResponsavel
+
+```
+### 📌 Diagrama de Atividades
+```mermaid
+flowchart LR
+    A([Início]) --> B[Tela de Login]
+    B --> C{Login realizado?}
+    C -- Não --> B
+    C -- Sim --> D[Verificar Permissões]
+
+    D --> E{Tipo de Permissão}
+    
+    E -- Admin --> F[Área Admin]
+    E -- User --> G[Área Usuário]
+
+    %% Fluxo do Admin
+    F --> F1[Gerenciar Usuários]
+    F1 --> F1a[Criar Usuário]
+    F1 --> F1b[Editar Usuário]
+    F1 --> F1c[Deletar Usuário]
+
+    F --> F2[Gerenciar Secretarias]
+    F2 --> F2a[Criar Secretaria]
+    F2 --> F2b[Editar Secretaria]
+    F2 --> F2c[Deletar Secretaria]
+
+    F --> F3[Gerenciar Eventos]
+    F3 --> F3a[Criar Evento]
+    F3 --> F3b[Editar Evento]
+    F3 --> F3c[Deletar Evento]
+
+    F --> F4[Visualizar Calendário Interativo]
+
+    %% Fluxo do Usuário
+    G --> G1[Visualizar Eventos]
+    G --> G2[Visualizar Calendário Interativo]
+
+    %% Logout disponível em todas as áreas
+    F1a --> H[Logout]
+    F1b --> H
+    F1c --> H
+    F2a --> H
+    F2b --> H
+    F2c --> H
+    F3a --> H
+    F3b --> H
+    F3c --> H
+    F4 --> H
+    G1 --> H
+    G2 --> H
+
+    H --> I((Fim))
+
+    %% Estilos de cor
+    style A fill:#9fdf9f,stroke:#333,stroke-width:2px,color:#000
+    style I fill:#ff9999,stroke:#333,stroke-width:2px,color:#000
+    style F fill:#66b3ff,stroke:#333,stroke-width:2px,color:#000
+    style G fill:#ffcc66,stroke:#333,stroke-width:2px,color:#000
+    style H fill:#cccccc,stroke:#333,stroke-width:2px,color:#000
+```
+
 ## Contribuidores
 
 Matheus Barkokebas - mbbc@cesar.school
