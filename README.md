@@ -169,6 +169,17 @@ flowchart LR
     style H fill:#cccccc,stroke:#333,stroke-width:2px,color:#000
 ```
 
+## Programação em PAR
+**Front-end**
+Usar programação em par no front-end melhora a qualidade visual e a usabilidade do produto, pois dois desenvolvedores podem validar juntos a experiência do usuário, identificar inconsistências de design e otimizar a responsividade de forma mais eficiente.
+
+![Storybord 1](imgs-readme/Storybord_1.png)
+
+**Back-end:**
+No back-end, a programação em par ajuda a construir sistemas mais robustos e seguros, permitindo que erros de lógica, falhas de performance e problemas de arquitetura sejam detectados e corrigidos rapidamente com a colaboração de dois desenvolvedores.
+
+![Storybord 1](imgs-readme/Storybord_1.png)
+
 ## Contribuidores
 
 Matheus Barkokebas - mbbc@cesar.school
