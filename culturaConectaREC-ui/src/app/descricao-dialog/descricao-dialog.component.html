@@ -1,0 +1,175 @@
+<div id="eventoModal" class="modal fade show d-block" tabindex="-1" aria-labelledby="eventoModalLabel" aria-modal="true"
+  role="dialog" style="background-color: transparent; pointer-events: none;">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable event-modal" style="pointer-events: all; margin-top: 5vh;">
+    <div class="modal-content">
+
+      <div class="modal-header d-flex justify-content-between align-items-center">
+        <h5 class="modal-title">{{ data.evento.infoBasicas.nome }}</h5>
+        <div class="d-flex align-items-center gap-2">
+          <button mat-icon-button color="primary" (click)="update()">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="delete()">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-12 mb-4">
+            <div class="info-card description-card">
+              <h6 class="section-title">Descrição do Evento</h6>
+              <div class="description-text" [class.long-text]="data.evento.infoBasicas.descricao.length > 500">
+                {{ data.evento.infoBasicas.descricao }}
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-7 col-12">
+            <div class="info-card">
+              <div class="info-row">
+                <div class="info-item">
+                  <h6>Status</h6>
+                  <p class="badge" style="color: black;"> {{ data.evento.infoBasicas.status }} </p>
+                </div>
+                <div class="info-item">
+                  <h6>Categoria</h6>
+                  <p>{{ data.evento.detalhes.categoria }}</p>
+                </div>
+                <div class="info-item">
+                  <h6>Periodicidade</h6>
+                  <p>{{ data.evento.detalhes.periodicidade }}</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="info-card">
+              <h6 class="section-title">Período do Evento</h6>
+              <div class="info-row">
+                <div class="info-item">
+                  <p><strong>Início:</strong><br>
+                    {{ data.evento.periodo.dataInicio | date }}<br>
+                    às {{ data.evento.periodo.horarioInicio }}</p>
+                </div>
+                <div class="info-item">
+                  <p><strong>Fim:</strong><br>
+                    {{ data.evento.periodo.dataFim | date }}<br>
+                    às {{ data.evento.periodo.horarioFim }}</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="info-card">
+              <h6 class="section-title">Localização</h6>
+              <div class="address-info">
+                <div class="info-row" *ngIf="data.evento.endereco.espacoPublico || data.evento.endereco.tipoEspaco">
+                  <div class="info-item" *ngIf="data.evento.endereco.espacoPublico">
+                    <h6>Espaço Público</h6>
+                    <p>{{ data.evento.endereco.espacoPublico }}</p>
+                  </div>
+                  <div class="info-item" *ngIf="data.evento.endereco.tipoEspaco">
+                    <h6>Tipo de Espaço</h6>
+                    <p>{{ data.evento.endereco.tipoEspaco }}</p>
+                  </div>
+                </div>
+
+                <p class="address-line">
+                  <mat-icon>place</mat-icon>
+                  {{ data.evento.endereco.logradouro }}, Nº {{ data.evento.endereco.numero }}, {{ data.evento.endereco.bairro }}
+                </p>
+                <p class="address-line">
+                  {{ data.evento.endereco.cidade }} - {{ data.evento.endereco.uf }}, CEP: {{ data.evento.endereco.cep }}
+                </p>
+                <p class="address-line" *ngIf="data.evento.endereco.complemento">
+                  <mat-icon>info</mat-icon> Complemento: {{ data.evento.endereco.complemento }}
+                </p>
+                <p class="address-line" *ngIf="data.evento.endereco.pontoReferencia">
+                  <mat-icon>signpost</mat-icon> Ponto de Referência: {{ data.evento.endereco.pontoReferencia }}
+                </p>
+                <a class="map-link" [href]="data.evento.endereco.linkGoogleMaps" target="_blank">
+                  <mat-icon>map</mat-icon> Ver no Google Maps
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-5 col-12">
+            <div class="info-card">
+              <h6 class="section-title">Detalhes do Local</h6>
+              <div class="details-grid">
+                <div class="detail-item">
+                  <mat-icon>people</mat-icon>
+                  <span>Capacidade: {{ data.evento.detalhes.capacidade }}</span>
+                </div>
+                <div class="detail-item">
+                  <mat-icon [color]="data.evento.detalhes.espacoCoberto ? 'primary' : 'warn'">
+                    {{ data.evento.detalhes.espacoCoberto ? 'check_circle' : 'cancel' }}
+                  </mat-icon>
+                  <span>Espaço Coberto</span>
+                </div>
+                <div class="detail-item">
+                  <mat-icon [color]="data.evento.detalhes.acessivel ? 'primary' : 'warn'">
+                    {{ data.evento.detalhes.acessivel ? 'check_circle' : 'cancel' }}
+                  </mat-icon>
+                  <span>Acessível</span>
+                </div>
+                <div class="detail-item">
+                  <mat-icon [color]="data.evento.detalhes.estacionamento ? 'primary' : 'warn'">
+                    {{ data.evento.detalhes.estacionamento ? 'check_circle' : 'cancel' }}
+                  </mat-icon>
+                  <span>Estacionamento</span>
+                </div>
+                <div class="detail-item">
+                  <mat-icon [color]="data.evento.detalhes.possuiBanheiros ? 'primary' : 'warn'">
+                    {{ data.evento.detalhes.possuiBanheiros ? 'check_circle' : 'cancel' }}
+                  </mat-icon>
+                  <span>Banheiros</span>
+                </div>
+                <div class="detail-item">
+                  <mat-icon [color]="data.evento.detalhes.wifiDisponivel ? 'primary' : 'warn'">
+                    {{ data.evento.detalhes.wifiDisponivel ? 'check_circle' : 'cancel' }}
+                  </mat-icon>
+                  <span>Wi-Fi Disponível</span>
+                </div>
+              </div>
+              <div class="equipment-info">
+                <h6>Equipamentos Fornecidos</h6>
+                <p>{{ data.evento.detalhes.equipamentosFornecidos || 'Nenhum equipamento informado' }}</p>
+              </div>
+            </div>
+
+            <div class="info-card links-card">
+              <h6 class="section-title">Links Relacionados</h6>
+              <div class="link-item" *ngIf="data.evento.links.linkSiteOficial">
+                <mat-icon>language</mat-icon>
+                <a [href]="data.evento.links.linkSiteOficial" target="_blank">Site Oficial</a>
+              </div>
+              <div class="link-item" *ngIf="data.evento.links.linkMapa">
+                <mat-icon>map</mat-icon>
+                <a [href]="data.evento.links.linkMapa" target="_blank">Mapa do Evento</a>
+              </div>
+              <div *ngIf="!data.evento.links.linkSiteOficial && !data.evento.links.linkMapa">
+                <p>Nenhum link relacionado informado</p>
+              </div>
+            </div>
+
+            <div class="info-card contact-card">
+              <h6 class="section-title">Secretaria Responsável</h6>
+              <div class="contact-info">
+                <mat-icon>business</mat-icon>
+                <span>{{ data.evento.secretariaResponsavel.nome }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button mat-stroked-button color="primary" (click)="fecharModal()">
+          <mat-icon>close</mat-icon> Fechar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

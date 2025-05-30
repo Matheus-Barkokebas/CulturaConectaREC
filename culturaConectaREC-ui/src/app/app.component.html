@@ -1,2 +1,4 @@
-<app-card-header></app-card-header>
+<nav *ngIf="isLoggedIn && router.url !== '/login'">
+  <app-card-header></app-card-header>
+</nav>
 <router-outlet></router-outlet>

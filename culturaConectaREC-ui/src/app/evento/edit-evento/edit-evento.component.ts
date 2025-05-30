@@ -11,9 +11,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-evento',
+  standalone: true,
   imports: [EventoFormComponent],
   templateUrl: './edit-evento.component.html',
-  styleUrl: './edit-evento.component.scss',
+  styleUrls: ['./edit-evento.component.scss'],
   providers: [
     { provide: SERVICES_TOKEN.HTTP.EVENTO, useClass: EventoService },
     { provide: SERVICES_TOKEN.SNACKBAR, useClass: SnackbarManagerService },
@@ -24,13 +25,45 @@ export class EditEventoComponent implements OnInit, OnDestroy {
 
   evento: Evento = {
     id: 0,
-    nome: '',
-    descricao: '',
-    dataInicio: new Date(''),
-    dataFim: new Date(''),
-    localizacao: '',
-    tipo: '',
-    status: '',
+    infoBasicas: {
+      nome: '',
+      descricao: '',
+      status: '',
+    },
+    periodo: {
+      dataInicio: new Date(),
+      dataFim: new Date(),
+      horarioInicio: '',
+      horarioFim: '',
+    },
+    endereco: {
+      espacoPublico: '',
+      tipoEspaco: '',
+      cep: '',
+      logradouro: '',
+      numero: '',
+      complemento: '',
+      bairro: '',
+      cidade: '',
+      uf: '',
+      pontoReferencia: '',
+      linkGoogleMaps: '',
+    },
+    detalhes: {
+      periodicidade: '',
+      categoria: '',
+      capacidade: 0,
+      espacoCoberto: false,
+      acessivel: false,
+      estacionamento: false,
+      possuiBanheiros: false,
+      wifiDisponivel: false,
+      equipamentosFornecidos: '',
+    },
+    links: {
+      linkSiteOficial: '',
+      linkMapa: '',
+    },
     secretariaResponsavel: {
       id: 0,
       nome: '',
@@ -49,14 +82,18 @@ export class EditEventoComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     if (!id) {
-      this.snackBarManager.show('Erro ao recuperar informacoes do evento');
+      this.snackBarManager.show('Erro ao recuperar informações do evento');
       this.router.navigate(['list/evento']);
       return;
     }
-    this.httpsubscriptions?.push(
-      this.httpService
-        .findByID(Number(id))
-        .subscribe((data) => (this.evento = data))
+    this.httpsubscriptions.push(
+      this.httpService.findByID(Number(id)).subscribe({
+        next: (data) => (this.evento = data),
+        error: () => {
+          this.snackBarManager.show('Erro ao buscar o evento');
+          this.router.navigate(['list/evento']);
+        },
+      })
     );
   }
 
@@ -65,16 +102,21 @@ export class EditEventoComponent implements OnInit, OnDestroy {
   }
 
   onSubmitClient(value: Evento) {
-    if (value.id) {
-      this.httpsubscriptions?.push(
-        this.httpService.update(value.id, value).subscribe((_) => {
-          this.snackBarManager.show('Evento autalizado com sucesso');
-          this.router.navigate(['list/evento']);
+    if (this.evento.id) {
+      this.httpsubscriptions.push(
+        this.httpService.update(this.evento.id, value).subscribe({
+          next: () => {
+            this.snackBarManager.show('Evento atualizado com sucesso');
+            this.router.navigate(['list/evento']);
+          },
+          error: () => {
+            this.snackBarManager.show('Erro ao atualizar o evento');
+          },
         })
       );
-      return;
+    } else {
+      this.snackBarManager.show('Um erro inesperado aconteceu');
+      this.router.navigate(['list/evento']);
     }
-    this.snackBarManager.show('Um erro inesperado aconteceu');
-    this.router.navigate(['list/evento']);
   }
 }

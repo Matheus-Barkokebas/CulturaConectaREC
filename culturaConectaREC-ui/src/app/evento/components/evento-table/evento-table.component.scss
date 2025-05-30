@@ -1,4 +1,5 @@
 .evento-card {
+  cursor: pointer;
   background-color: #ffffff;
   color: #1a237e;
   border: 1px solid #e3f2fd;
@@ -27,8 +28,10 @@
 
   mat-card-content {
     font-size: 0.95rem;
+
     p {
       margin-bottom: 0.5rem;
+
       strong {
         color: #1e88e5;
       }
@@ -38,15 +41,21 @@
   mat-card-actions {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
     margin-top: 1rem;
+
+    .spacer {
+      flex: 1;
+    }
 
     button {
       margin-left: 0.5rem;
     }
 
-    mat-icon {
-      font-size: 20px;
+    .ver-detalhes {
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      min-width: unset;
     }
   }
 }
-

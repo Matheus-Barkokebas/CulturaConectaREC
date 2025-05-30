@@ -1,16 +1,14 @@
 package cesar.ccr.com.service.impl;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import cesar.ccr.com.entity.Secretaria;
 import cesar.ccr.com.repository.SecretariaRepository;
-import cesar.ccr.com.repository.UsuarioRepository;
 import cesar.ccr.com.service.ISecretariaService;
 import cesar.ccr.com.service.query.ISecretariaQueryService;
-import cesar.ccr.com.service.query.IUsuarioQueryService;
 import lombok.AllArgsConstructor;
 
-@Repository
+@Service
 @AllArgsConstructor
 public class SecretariaService implements ISecretariaService{
 

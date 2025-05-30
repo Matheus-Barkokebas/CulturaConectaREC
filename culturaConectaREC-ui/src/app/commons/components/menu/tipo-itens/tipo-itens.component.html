@@ -1,0 +1,8 @@
+<mat-tab-group selectedIndex="{{currentIndex}}">
+  <mat-tab label="Cadastrar Tipos Itens">
+    <app-new-tipo-itens (savedTipoItens)="changeTabToListTipoItens()"></app-new-tipo-itens>
+  </mat-tab>
+  <mat-tab label="Visualizar Tipos Itens">
+    <app-list-tipo-itens [tipoItens]="tipoItens"></app-list-tipo-itens>
+  </mat-tab>
+</mat-tab-group>

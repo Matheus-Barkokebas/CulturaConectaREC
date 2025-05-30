@@ -1,0 +1,76 @@
+// Estilos SCSS
+.form-container {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 6px 24px rgba(33, 150, 243, 0.15);
+  }
+
+  .form-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #2196F3; // Azul Material
+
+    h2 {
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      font-size: 1.8rem;
+    }
+
+    p {
+      color: #757575;
+      margin: 0;
+      font-size: 0.9rem;
+    }
+  }
+
+  .form-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .form-field {
+    width: 100%;
+
+    .mat-icon {
+      color: #2196F3;
+      margin-right: 8px;
+    }
+
+    .mat-form-field-outline {
+      color: rgba(33, 150, 243, 0.2);
+    }
+
+    .mat-form-field-outline-thick {
+      color: #2196F3;
+    }
+
+    .mat-input-element {
+      padding-left: 8px;
+    }
+  }
+
+  .submit-button {
+    background: linear-gradient(135deg, #1976D2, #0D47A1);
+    color: white;
+    box-shadow: 0 4px 12px rgba(25, 118, 210, 0.3);
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(25, 118, 210, 0.4);
+      background: linear-gradient(135deg, #1E88E5, #1565C0);
+    }
+  }
+
+  .mat-error {
+    font-size: 0.8rem;
+    margin-top: 5px;
+  }
+}

@@ -1,33 +1,85 @@
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-      <mat-card class="demo-inline-calendar-card">
-        <mat-calendar (selectedChange)="onDateSelected($event)"></mat-calendar>
-      </mat-card>
-      <p *ngIf="selected()">Data selecionada: {{ selected() | date }}</p>
+<div class="calendar-responsive-container">
+  <div class="calendar-section">
+    <mat-card class="optimized-calendar-card">
+      <div class="calendar-header">
+        <button mat-icon-button (click)="changeMonth(-1)">
+          <mat-icon>chevron_left</mat-icon>
+        </button>
+        <h3>{{ currentMonth() }} {{ currentYear() }}</h3>
+        <button mat-icon-button (click)="changeMonth(1)">
+          <mat-icon>chevron_right</mat-icon>
+        </button>
+      </div>
+
+      <div class="weekdays">
+        <div *ngFor="let day of weekDaysShort" class="weekday">{{ day }}</div>
+      </div>
+
+      <div class="days-grid">
+        <div *ngFor="let day of calendarDays()" class="day"
+             [class.empty]="!day.value"
+             [class.selected]="isSelected(day.value)"
+             [class.has-cultura-events]="day.hasCultura"
+             [class.has-turismo-events]="day.hasTurismo"
+             [class.has-both-events]="day.hasBoth"
+             (click)="selectDay(day.value)">
+          <span class="day-number">{{ day.display }}</span>
+          <div class="event-indicators">
+            <span *ngIf="day.hasCultura" class="indicator cultura"></span>
+            <span *ngIf="day.hasTurismo" class="indicator turismo"></span>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+
+    <div class="selected-date-info" *ngIf="selected()">
+      <h4>{{ selected() | date:'fullDate' }}</h4>
+      <div class="event-types">
+        <span class="event-type cultura">Cultura</span>
+        <span class="event-type turismo">Turismo</span>
+      </div>
     </div>
   </div>
 
-  <div class="row mt-3" *ngIf="eventosDoDia().length > 0; else semEventos">
-    <div class="col-md-4 mb-4" *ngFor="let evento of eventosDoDia()">
-      <mat-card class="evento-card h-100">
-        <mat-card-title>{{ evento.nome }}</mat-card-title>
-        <mat-card-subtitle>
-          {{ evento.secretariaResponsavel.nome }} - {{ evento.tipo }}
-        </mat-card-subtitle>
+  <div class="events-section">
+    <div *ngIf="eventosDoDia().length > 0; else semEventos">
+      <div class="event-cards-container">
+        <mat-card class="optimized-event-card" *ngFor="let evento of eventosDoDia()">
+          <mat-card-header>
+            <mat-card-title>{{ evento.infoBasicas.nome }}</mat-card-title>
+            <mat-card-subtitle>
+              {{ evento.secretariaResponsavel.nome }}
+            </mat-card-subtitle>
+          </mat-card-header>
 
-        <mat-card-content>
-          <p><strong>Descrição:</strong> {{ evento.descricao }}</p>
-          <p><strong>Localização:</strong> {{ evento.localizacao }}</p>
-          <p><strong>Status:</strong> {{ evento.status }}</p>
-          <p><strong>Início:</strong> {{ evento.dataInicio }}</p>
-          <p><strong>Fim:</strong> {{ evento.dataFim }}</p>
-        </mat-card-content>
-      </mat-card>
+          <mat-card-content>
+            <div class="event-meta">
+              <p><mat-icon>event</mat-icon> {{ evento.periodo.dataInicio | date:'short' }}</p>
+              <p><mat-icon>schedule</mat-icon> {{ evento.periodo.horarioInicio }}</p>
+              <p><mat-icon>label</mat-icon> {{ evento.detalhes.categoria }}</p>
+            </div>
+          </mat-card-content>
+
+          <mat-card-actions>
+            <button mat-icon-button (click)="update(evento); $event.stopPropagation()">
+              <mat-icon color="primary">edit</mat-icon>
+            </button>
+            <button mat-icon-button (click)="delete(evento); $event.stopPropagation()">
+              <mat-icon color="warn">delete</mat-icon>
+            </button>
+            <button mat-button (click)="abrirDescricao(evento); $event.stopPropagation()">
+              <mat-icon>info</mat-icon> Detalhes
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
     </div>
-  </div>
 
-  <ng-template #semEventos>
-    <p class="text-center mt-3" *ngIf="selected()">Nenhum evento para a data selecionada.</p>
-  </ng-template>
+    <ng-template #semEventos>
+      <div class="no-events">
+        <mat-icon>event_busy</mat-icon>
+        <p>Nenhum evento para esta data</p>
+      </div>
+    </ng-template>
+  </div>
 </div>

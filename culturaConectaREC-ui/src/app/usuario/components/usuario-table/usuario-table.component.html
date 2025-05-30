@@ -1,56 +1,50 @@
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<div class="elegant-table-container">
+  <table mat-table [dataSource]="dataSource" class="elegant-table mat-elevation-z1">
+    <ng-container matColumnDef="nome">
+      <th mat-header-cell *matHeaderCellDef class="table-header">Nome</th>
+      <td mat-cell *matCellDef="let usuario" class="table-cell">{{usuario.nome}}</td>
+    </ng-container>
 
-  <ng-containter matColumnDef="nome">
-    <th mat-header-cell *matHeaderCellDef>Nome</th>
-    <td mat-cell *matCellDef="let usuario">{{usuario.nome}}</td>
-  </ng-containter>
+    <ng-container matColumnDef="secretaria">
+      <th mat-header-cell *matHeaderCellDef class="table-header">Secretaria</th>
+      <td mat-cell *matCellDef="let usuario" class="table-cell">{{usuario.secretaria.nome}}</td>
+    </ng-container>
 
-  <ng-containter matColumnDef="secretaria">
-    <th mat-header-cell *matHeaderCellDef>Secretaria</th>
-    <td mat-cell *matCellDef="let usuario">{{usuario.secretaria.nome}}</td>
-  </ng-containter>
+    <ng-container matColumnDef="cargo">
+      <th mat-header-cell *matHeaderCellDef class="table-header">Cargo</th>
+      <td mat-cell *matCellDef="let usuario" class="table-cell">{{usuario.cargo}}</td>
+    </ng-container>
 
-  <ng-containter matColumnDef="cargo">
-    <th mat-header-cell *matHeaderCellDef>Cargo</th>
-    <td mat-cell *matCellDef="let usuario">{{usuario.cargo}}</td>
-  </ng-containter>
+    <ng-container matColumnDef="cpf">
+      <th mat-header-cell *matHeaderCellDef class="table-header">Matrícula</th>
+      <td mat-cell *matCellDef="let usuario" class="table-cell">{{usuario.cpf}}</td>
+    </ng-container>
 
-  <ng-containter matColumnDef="cpf">
-    <th mat-header-cell *matHeaderCellDef>CPF</th>
-    <td mat-cell *matCellDef="let usuario">{{usuario.cpf}}</td>
-  </ng-containter>
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef class="table-header">Email</th>
+      <td mat-cell *matCellDef="let usuario" class="table-cell">{{usuario.email}}</td>
+    </ng-container>
 
-  <ng-containter matColumnDef="email">
-    <th mat-header-cell *matHeaderCellDef>Email</th>
-    <td mat-cell *matCellDef="let usuario">{{usuario.email}}</td>
-  </ng-containter>
+    <ng-container matColumnDef="permissao">
+      <th mat-header-cell *matHeaderCellDef class="table-header">Permissão</th>
+      <td mat-cell *matCellDef="let usuario" class="table-cell">{{usuario.permissao}}</td>
+    </ng-container>
 
-  <ng-containter matColumnDef="permissao">
-    <th mat-header-cell *matHeaderCellDef>Permissão</th>
-    <td mat-cell *matCellDef="let usuario">{{usuario.permissao}}</td>
-  </ng-containter>
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef class="table-header actions-header">Ações</th>
+      <td mat-cell *matCellDef="let usuario" class="table-cell actions-cell">
+        <button mat-icon-button matTooltip="Excluir" class="delete-button" (click)="delete(usuario)">
+          <mat-icon>delete_outline</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="Editar" class="edit-button" (click)="update(usuario)">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </td>
+    </ng-container>
 
-  <ng-containter matColumnDef="senha">
-    <th mat-header-cell *matHeaderCellDef>Senha</th>
-    <td mat-cell *matCellDef="let usuario">{{usuario.senha}}</td>
-  </ng-containter>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" class="header-row"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns" class="data-row"></tr>
+  </table>
 
-  <ng-containter matColumnDef="actions">
-    <th mat-header-cell *matHeaderCellDef>Ações</th>
-    <td mat-cell *matCellDef="let usuario">
-      <button mat-mini-fab extended matTooltip="excluir" class="delete-button" (click)="delete(usuario)">
-        <mat-icon>delete</mat-icon>
-      </button>
-
-      <button mat-mini-fab extended matTooltip="atualizar" class="update-button" (click)="update(usuario)">
-        <mat-icon>edit</mat-icon>
-      </button>
-    </td>
-  </ng-containter>
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-</table>
-
-<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
-</mat-paginator>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons class="elegant-paginator"></mat-paginator>
+</div>

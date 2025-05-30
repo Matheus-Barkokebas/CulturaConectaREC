@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { SERVICES_TOKEN } from '../services/service.token';
 import { SnackbarManagerService } from '../services/snackbar-manager.service';
 import { ISnackbarManagerService } from '../services/isnackbar-manager.service';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ import { ISnackbarManagerService } from '../services/isnackbar-manager.service';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',

@@ -1,0 +1,199 @@
+.event-form-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 16px;
+  background-color: white;
+  box-shadow: 0 8px 32px rgba(33, 150, 243, 0.1);
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 12px 40px rgba(33, 150, 243, 0.15);
+  }
+
+  .form-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: #1976D2;
+
+    h2 {
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      font-size: 2rem;
+    }
+
+    p {
+      color: #616161;
+      margin: 0;
+      font-size: 1rem;
+    }
+  }
+
+  .custom-stepper {
+    background: transparent;
+
+    .mat-step-header {
+      &.cdk-keyboard-focused, &.cdk-program-focused, &:hover {
+        background-color: rgba(25, 118, 210, 0.04);
+      }
+
+      .mat-step-label {
+        font-weight: 500;
+        color: #424242;
+      }
+
+      .mat-step-icon {
+        background-color: #E3F2FD;
+        color: #1976D2;
+
+        &-selected {
+          background-color: #1976D2;
+          color: white;
+        }
+      }
+    }
+
+    .step-content {
+      padding: 1.5rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .form-field {
+      width: 100%;
+
+      .mat-icon {
+        color: #1976D2;
+        margin-right: 8px;
+      }
+
+      .mat-form-field-outline {
+        color: rgba(25, 118, 210, 0.12);
+      }
+
+      .mat-form-field-outline-thick {
+        color: #1976D2;
+      }
+
+      .mat-input-element {
+        padding-left: 8px;
+      }
+
+      .mat-select-arrow {
+        color: #1976D2;
+      }
+
+      &.cep-field {
+        grid-column: span 1;
+      }
+
+      &.uf-field {
+        max-width: 100px;
+      }
+    }
+
+    .checkboxes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1rem 0;
+
+      mat-checkbox {
+        display: flex;
+        align-items: center;
+
+        .mat-checkbox-label {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+
+        .mat-icon {
+          font-size: 20px;
+          width: 20px;
+          height: 20px;
+          color: #1976D2;
+        }
+      }
+    }
+
+    .stepper-actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+
+      button {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0.5rem 1.5rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background-color: rgba(25, 118, 210, 0.08);
+        }
+      }
+
+      .submit-button {
+        background: linear-gradient(135deg, #1976D2, #0D47A1);
+        color: white;
+        box-shadow: 0 4px 12px rgba(25, 118, 210, 0.3);
+
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 16px rgba(25, 118, 210, 0.4);
+          background: linear-gradient(135deg, #1E88E5, #1565C0);
+        }
+      }
+    }
+
+    .mat-error {
+      font-size: 0.8rem;
+      color: #D32F2F;
+      margin-top: 5px;
+    }
+  }
+
+  .mobile-stepper {
+    .step-content {
+      padding: 1rem 0;
+    }
+
+    .form-field {
+      width: 100%;
+    }
+
+    .stepper-actions {
+      flex-direction: column;
+      gap: 1rem;
+
+      button {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  }
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

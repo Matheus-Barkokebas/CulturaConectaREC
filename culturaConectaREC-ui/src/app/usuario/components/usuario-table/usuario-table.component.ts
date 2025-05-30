@@ -53,7 +53,6 @@ export class UsuarioTableComponent
     'cpf',
     'email',
     'permissao',
-    'senha',
     'actions',
   ];
 

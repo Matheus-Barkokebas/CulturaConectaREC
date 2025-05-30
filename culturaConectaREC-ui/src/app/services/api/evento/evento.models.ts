@@ -1,35 +1,74 @@
+import { Itens } from '../../../itens/itens.model';
 import { Secretaria } from '../../../secretaria/secretaria.models';
+
+export interface InfoBasicas {
+  nome: string;
+  descricao: string;
+  status: string;
+}
+
+export interface Periodo {
+  dataInicio: Date;
+  dataFim: Date;
+  horarioInicio: string;
+  horarioFim: string;
+}
+
+export interface Endereco {
+  espacoPublico: string;
+  tipoEspaco: string;
+  cep: string;
+  logradouro: string;
+  numero: string;
+  complemento: string;
+  bairro: string;
+  cidade: string;
+  uf: string;
+  pontoReferencia: string;
+  linkGoogleMaps: string;
+}
+
+export interface Detalhes {
+  periodicidade: string;
+  categoria: string;
+  capacidade: number;
+  espacoCoberto: boolean;
+  acessivel: boolean;
+  estacionamento: boolean;
+  possuiBanheiros: boolean;
+  wifiDisponivel: boolean;
+  equipamentosFornecidos: string;
+}
+
+export interface Links {
+  linkSiteOficial: string;
+  linkMapa: string;
+}
 
 export class EventoDto {
   id: number;
-  nome: string;
-  descricao: string;
-  dataInicio: Date;
-  dataFim: Date;
-  localizacao: string;
-  tipo: string;
-  status: string;
+  infoBasicas: InfoBasicas;
+  periodo: Periodo;
+  endereco: Endereco;
+  detalhes: Detalhes;
+  links: Links;
   secretariaResponsavel: Secretaria;
 
   constructor(
     id: number,
-    nome: string,
-    descricao: string,
-    dataInicio: Date,
-    dataFim: Date,
-    localizacao: string,
-    tipo: string,
-    status: string,
+    infoBasicas: InfoBasicas,
+    periodo: Periodo,
+    endereco: Endereco,
+    detalhes: Detalhes,
+    links: Links,
     secretariaResponsavel: Secretaria
   ) {
     this.id = id;
-    this.nome = nome;
-    this.descricao = descricao;
-    this.dataInicio = dataInicio;
-    this.dataFim = dataFim;
-    this.localizacao = localizacao;
-    this.tipo = tipo;
-    this.status = status;
+    this.infoBasicas = infoBasicas;
+    this.periodo = periodo;
+    this.endereco = endereco;
+    this.detalhes = detalhes;
+    this.links = links;
     this.secretariaResponsavel = secretariaResponsavel;
   }
 }

@@ -1,27 +1,45 @@
 <div class="container mt-4">
+  <div class="filter-controls text-center mb-3">
+    <mat-form-field appearance="fill" style="width: 300px;">
+      <mat-label>Filtrar por Secretaria</mat-label>
+      <mat-select [(value)]="selectedSecretaria" (selectionChange)="onFilterChange()">
+        <mat-option [value]="null">Todas</mat-option>
+        <mat-option *ngFor="let secretaria of secretariasDisponiveis" [value]="secretaria">
+          {{ secretaria }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
   <div class="row">
     <div class="col-md-4 mb-4" *ngFor="let evento of paginatedEventos">
-      <mat-card class="evento-card h-100">
-        <mat-card-title>{{ evento.nome }}</mat-card-title>
+      <mat-card class="evento-card h-100" (click)="abrirDescricao(evento)">
+        <mat-card-title>{{ evento.infoBasicas.nome }}</mat-card-title>
         <mat-card-subtitle>
-          {{ evento.secretariaResponsavel.nome }} - {{ evento.tipo }}
+          {{ evento.secretariaResponsavel.nome }} - {{ evento.detalhes.categoria }}
         </mat-card-subtitle>
 
         <mat-card-content>
-          <p><strong>Descrição:</strong> {{ evento.descricao }}</p>
-          <p><strong>Localização:</strong> {{ evento.localizacao }}</p>
-          <p><strong>Status:</strong> {{ evento.status }}</p>
-          <p><strong>Início:</strong> {{ evento.dataInicio }}</p>
-          <p><strong>Fim:</strong> {{ evento.dataFim }}</p>
+          <p><strong>Status:</strong> {{ evento.infoBasicas.status }}</p>
+          <p><strong>Início:</strong> {{ evento.periodo.dataInicio }} as {{ evento.periodo.horarioInicio }}</p>
+          <p><strong>Fim:</strong> {{ evento.periodo.dataFim }} as {{ evento.periodo.horarioFim }}</p>
         </mat-card-content>
 
         <mat-card-actions>
-          <button mat-icon-button color="primary" matTooltip="Editar" (click)="update(evento)">
+          <button mat-icon-button color="primary" matTooltip="Editar"
+            (click)="update(evento); $event.stopPropagation()">
             <mat-icon>edit</mat-icon>
           </button>
 
-          <button mat-icon-button color="warn" matTooltip="Excluir" (click)="delete(evento)">
+          <button mat-icon-button color="warn" matTooltip="Excluir" (click)="delete(evento); $event.stopPropagation()">
             <mat-icon>delete</mat-icon>
+          </button>
+
+          <span class="spacer"></span>
+
+          <button mat-button color="accent" class="ver-detalhes"
+            (click)="abrirDescricao(evento); $event.stopPropagation()">
+            Ver detalhes
           </button>
         </mat-card-actions>
       </mat-card>

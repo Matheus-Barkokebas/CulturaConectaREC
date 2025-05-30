@@ -17,12 +17,17 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { Evento } from '../../evento.model';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { CommonModule } from '@angular/common';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { Evento } from '../../evento.model';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { DescricaoDialogComponent } from '../../../descricao-dialog/descricao-dialog.component';
 
 @Component({
   selector: 'app-evento-table',
+  standalone: true,
   imports: [
     CommonModule,
     MatCardModule,
@@ -30,6 +35,9 @@ import { CommonModule } from '@angular/common';
     MatIconModule,
     MatTooltipModule,
     MatPaginatorModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatDialogModule,
   ],
   templateUrl: './evento-table.component.html',
   styleUrl: './evento-table.component.scss',
@@ -50,14 +58,21 @@ export class EventoTableComponent implements OnChanges, OnDestroy {
   currentPage = 0;
   totalPages = 1;
 
+  selectedSecretaria: string | null = null;
+  secretariasDisponiveis: string[] = [];
+
   constructor(
     @Inject(SERVICES_TOKEN.DIALOG)
-    private readonly dialogManagerService: IDialogManagerService
+    private readonly dialogManagerService: IDialogManagerService,
+    private dialog: MatDialog
   ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['eventos']) {
       this.currentPage = 0;
+      this.secretariasDisponiveis = [
+        ...new Set(this.eventos.map((e) => e.secretariaResponsavel.nome)),
+      ];
       this.updatePaginatedData();
     }
   }
@@ -74,7 +89,7 @@ export class EventoTableComponent implements OnChanges, OnDestroy {
     this.dialogManagerService
       .showYesNoDialog(YesNoDialogComponent, {
         title: 'Exclusão do evento',
-        content: `Confirma a exclusão do evento ${evento.nome}?`,
+        content: `Confirma a exclusão do evento ${evento.infoBasicas.nome}?`,
       })
       .subscribe((result) => {
         if (result) {
@@ -87,10 +102,18 @@ export class EventoTableComponent implements OnChanges, OnDestroy {
   }
 
   updatePaginatedData() {
+    let eventosFiltrados = this.eventos;
+
+    if (this.selectedSecretaria) {
+      eventosFiltrados = eventosFiltrados.filter(
+        (e) => e.secretariaResponsavel.nome === this.selectedSecretaria
+      );
+    }
+
     const start = this.currentPage * this.pageSize;
     const end = start + this.pageSize;
-    this.paginatedEventos = this.eventos.slice(start, end);
-    this.totalPages = Math.ceil(this.eventos.length / this.pageSize) || 1;
+    this.paginatedEventos = eventosFiltrados.slice(start, end);
+    this.totalPages = Math.ceil(eventosFiltrados.length / this.pageSize) || 1;
   }
 
   nextPage() {
@@ -105,5 +128,21 @@ export class EventoTableComponent implements OnChanges, OnDestroy {
       this.currentPage--;
       this.updatePaginatedData();
     }
+  }
+
+  onFilterChange() {
+    this.currentPage = 0;
+    this.updatePaginatedData();
+  }
+
+  abrirDescricao(evento: Evento): void {
+    this.dialog.open(DescricaoDialogComponent, {
+      data: {
+        evento,
+        onUpdate: () => this.update(evento),
+        onDelete: () => this.delete(evento),
+      },
+      width: '400px',
+    });
   }
 }

@@ -17,27 +17,23 @@ public interface IEventoMapper {
 	ISecretariaMapper INSTANCE = Mappers.getMapper(ISecretariaMapper.class);
 	
 	@Mapping(target = "id", ignore = true)
-	@Mapping(source = "nome", target = "nome")
-	@Mapping(source = "descricao", target = "descricao")
-	@Mapping(source = "dataInicio", target = "dataInicio")
-	@Mapping(source = "dataFim", target = "dataFim")
-	@Mapping(source = "localizacao", target = "localizacao")
-	@Mapping(source = "tipo", target = "tipo")
-	@Mapping(source = "status", target = "status")
-	@Mapping(source = "secretariaResponsavel", target = "secretariaResponsavel")
+    @Mapping(source = "infoBasicas", target = "infoBasicas")
+    @Mapping(source = "periodo", target = "periodo")
+    @Mapping(source = "endereco", target = "endereco")
+    @Mapping(source = "detalhes", target = "detalhes")
+    @Mapping(source = "links", target = "links")
+    @Mapping(source = "secretariaResponsavel", target = "secretariaResponsavel")
 	Evento toEntity(final EventoDto dto);
 	
 	EventoDto toSaveResponse(final Evento entity);
 	
-	@Mapping(source = "id", target = "id")
-	@Mapping(source = "nome", target = "nome")
-	@Mapping(source = "descricao", target = "descricao")
-	@Mapping(source = "dataInicio", target = "dataInicio")
-	@Mapping(source = "dataFim", target = "dataFim")
-	@Mapping(source = "localizacao", target = "localizacao")
-	@Mapping(source = "tipo", target = "tipo")
-	@Mapping(source = "status", target = "status")
-	@Mapping(source = "secretariaResponsavel", target = "secretariaResponsavel")
+	@Mapping(target = "id", ignore = true)
+    @Mapping(source = "infoBasicas", target = "infoBasicas")
+    @Mapping(source = "periodo", target = "periodo")
+    @Mapping(source = "endereco", target = "endereco")
+    @Mapping(source = "detalhes", target = "detalhes")
+    @Mapping(source = "links", target = "links")
+    @Mapping(source = "secretariaResponsavel", target = "secretariaResponsavel")
 	EventoDto toDto(final Evento entity);
 	
 	EventoDto toUpdateResponse(final Evento entity);

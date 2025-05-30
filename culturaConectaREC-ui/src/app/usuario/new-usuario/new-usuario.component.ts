@@ -11,10 +11,8 @@ import { SnackbarManagerService } from '../../services/snackbar-manager.service'
 import { Subscription } from 'rxjs';
 import { IUsuarioService } from '../../services/api/usuario/iusuario.service';
 import { ISnackbarManagerService } from '../../services/isnackbar-manager.service';
-import { Router } from '@angular/router';
 import { UsuarioFormComponent } from '../components/usuario-form/usuario-form.component';
 import { UsuarioDto } from '../../services/api/usuario/usuario.models';
-import { Usuario } from '../usuario.model';
 
 @Component({
   selector: 'app-new-usuario',

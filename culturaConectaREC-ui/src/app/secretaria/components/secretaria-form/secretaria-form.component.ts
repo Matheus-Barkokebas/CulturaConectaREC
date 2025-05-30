@@ -4,10 +4,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { Secretaria } from '../../secretaria.models';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-secretaria-form',
-  imports: [FormsModule, MatInputModule, MatFormFieldModule, MatButtonModule],
+  imports: [FormsModule, MatInputModule, MatFormFieldModule, MatButtonModule, MatIconModule],
   templateUrl: './secretaria-form.component.html',
   styleUrl: './secretaria-form.component.scss',
 })

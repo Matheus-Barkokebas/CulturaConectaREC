@@ -1,83 +1,301 @@
-<form #form="ngForm" (ngSubmit)="onSubmit(form)" class="container mt-4">
-  <div class="row mb-3">
-    <div class="col-md-4">
-      <mat-form-field appearance="fill" class="w-100">
-        <mat-label>Nome</mat-label>
-        <input matInput name="nome" #nomeModel="ngModel" [(ngModel)]="evento.nome" required>
-        <mat-error *ngIf="nomeModel.hasError('required')">Informe o nome do Usuário</mat-error>
-      </mat-form-field>
-    </div>
-    <div class="col-md-4">
-      <mat-form-field appearance="fill" class="w-100">
-        <mat-label>Descrição</mat-label>
-        <input matInput name="descricao" #descricaoModel="ngModel" [(ngModel)]="evento.descricao" required>
-        <mat-error *ngIf="descricaoModel.hasError('required')">Informe uma descrição para o evento</mat-error>
-      </mat-form-field>
-    </div>
-    <div class="col-md-4">
-      <mat-form-field appearance="fill" class="w-100">
-        <mat-label>Tipo</mat-label>
-        <input matInput name="tipo" #tipoModel="ngModel" [(ngModel)]="evento.tipo" required>
-        <mat-error *ngIf="tipoModel.hasError('required')">Informe o tipo do Evento</mat-error>
-      </mat-form-field>
-    </div>
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="event-form-container">
+  <div class="form-header">
+    <h2>Cadastro de Evento</h2>
+    <p>Preencha todas as etapas para cadastrar um novo evento</p>
   </div>
 
-  <div class="row mb-3">
-    <div class="col-md-4">
-      <mat-form-field appearance="fill" class="w-100">
-        <mat-label>Data de Início</mat-label>
-        <input matInput [matDatepicker]="pickerInicio" name="dataInicio" #dataInicioModel="ngModel"
-          [(ngModel)]="evento.dataInicio" required>
-        <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle matIconSuffix [for]="pickerInicio"></mat-datepicker-toggle>
-        <mat-datepicker #pickerInicio></mat-datepicker>
-        <mat-error *ngIf="dataInicioModel.hasError('required')">
-          Informe a data de início do Evento
-        </mat-error>
-      </mat-form-field>
-    </div>
+  <mat-vertical-stepper linear class="custom-stepper">
+    <!-- Passo 1 - Informações Básicas -->
+    <mat-step [stepControl]="infoBasicasControl" label="Informações Básicas">
+      <div class="step-content" formGroupName="infoBasicas">
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Nome do Evento</mat-label>
+          <input matInput formControlName="nome" required>
+          <mat-icon matPrefix>event</mat-icon>
+          <mat-error *ngIf="form.get('infoBasicas.nome')?.hasError('required')">
+            Nome é obrigatório
+          </mat-error>
+        </mat-form-field>
 
-    <div class="col-md-4">
-      <mat-form-field appearance="fill" class="w-100">
-        <mat-label>Data de Finalização</mat-label>
-        <input matInput [matDatepicker]="pickerFim" name="dataFim" #dataFimModel="ngModel" [(ngModel)]="evento.dataFim"
-          required>
-        <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle matIconSuffix [for]="pickerFim"></mat-datepicker-toggle>
-        <mat-datepicker #pickerFim></mat-datepicker>
-        <mat-error *ngIf="dataFimModel.hasError('required')">
-          Informe a data de finalização do Evento
-        </mat-error>
-      </mat-form-field>
-    </div>
-    <div class="col-md-4">
-      <mat-form-field appearance="fill" class="w-100">
-        <mat-label>Localização</mat-label>
-        <input matInput name="localizacao" #localizacaoModel="ngModel" [(ngModel)]="evento.localizacao" required>
-        <mat-error *ngIf="localizacaoModel.hasError('required')">Informe a localização do Evento</mat-error>
-      </mat-form-field>
-    </div>
-  </div>
-  <div class="row mb-3">
-    <div class="col-md-4">
-      <mat-form-field appearance="fill" class="w-100">
-        <mat-label>Status</mat-label>
-        <input matInput name="status" #statusModel="ngModel" [(ngModel)]="evento.status" required>
-        <mat-error *ngIf="statusModel.hasError('required')">Informe o status do Evento</mat-error>
-      </mat-form-field>
-    </div>
-    <div class="col-md-4">
-      <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Secretaria</mat-label>
-        <mat-select [(ngModel)]="evento.secretariaResponsavel" name="secretaria" required>
-          <mat-option *ngFor="let secretaria of secretarias" [value]="secretaria">
-            {{ secretaria.nome }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-  </div>
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Descrição</mat-label>
+          <textarea matInput formControlName="descricao" required rows="4"></textarea>
+          <mat-icon matPrefix>description</mat-icon>
+          <mat-error *ngIf="form.get('infoBasicas.descricao')?.hasError('required')">
+            Descrição é obrigatória
+          </mat-error>
+        </mat-form-field>
 
-  <button type="submit" mat-flat-button color="primary" [disabled]="form.invalid">Salvar</button>
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Status</mat-label>
+          <input matInput formControlName="status" required>
+          <mat-icon matPrefix>info</mat-icon>
+          <mat-error *ngIf="form.get('infoBasicas.status')?.hasError('required')">
+            Status é obrigatório
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="stepper-actions">
+        <button type="button" mat-stroked-button color="primary" matStepperNext>
+          Próximo <mat-icon>arrow_forward</mat-icon>
+        </button>
+      </div>
+    </mat-step>
+
+    <!-- Passo 2 - Período -->
+    <mat-step [stepControl]="periodoControl" label="Período">
+      <div class="step-content" formGroupName="periodo">
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Data de Início</mat-label>
+            <input matInput [matDatepicker]="pickerInicio" formControlName="dataInicio" required>
+            <mat-datepicker-toggle matSuffix [for]="pickerInicio"></mat-datepicker-toggle>
+            <mat-datepicker #pickerInicio></mat-datepicker>
+            <mat-icon matPrefix>date_range</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Data de Fim</mat-label>
+            <input matInput [matDatepicker]="pickerFim" formControlName="dataFim" required>
+            <mat-datepicker-toggle matSuffix [for]="pickerFim"></mat-datepicker-toggle>
+            <mat-datepicker #pickerFim></mat-datepicker>
+            <mat-icon matPrefix>date_range</mat-icon>
+          </mat-form-field>
+        </div>
+
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Horário de Início</mat-label>
+            <input matInput type="time" formControlName="horarioInicio" required>
+            <mat-icon matPrefix>access_time</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Horário de Fim</mat-label>
+            <input matInput type="time" formControlName="horarioFim" required>
+            <mat-icon matPrefix>access_time</mat-icon>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="stepper-actions">
+        <button type="button" mat-stroked-button matStepperPrevious>
+          <mat-icon>arrow_back</mat-icon> Voltar
+        </button>
+        <button type="button" mat-stroked-button color="primary" matStepperNext>
+          Próximo <mat-icon>arrow_forward</mat-icon>
+        </button>
+      </div>
+    </mat-step>
+
+    <!-- Passo 3 - Endereço -->
+    <mat-step [stepControl]="enderecoControl" label="Endereço">
+      <div class="step-content" formGroupName="endereco">
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="form-field cep-field">
+            <mat-label>CEP</mat-label>
+            <input matInput formControlName="cep" (blur)="consultarCEP()" (input)="formatarCEP($event)"
+                   maxlength="9" placeholder="00000-000" required>
+            <mat-icon matPrefix>pin_drop</mat-icon>
+            <mat-icon matSuffix *ngIf="isLoadingCep" class="spinner">autorenew</mat-icon>
+            <button type="button" mat-icon-button matSuffix *ngIf="!isLoadingCep" (click)="consultarCEP()"
+                    matTooltip="Consultar CEP">
+              <mat-icon>search</mat-icon>
+            </button>
+            <mat-error *ngIf="form.get('endereco.cep')?.hasError('pattern')">
+              Formato inválido (00000-000)
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Logradouro</mat-label>
+            <input matInput formControlName="logradouro">
+            <mat-icon matPrefix>road</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Número</mat-label>
+            <input matInput formControlName="numero">
+            <mat-icon matPrefix>home</mat-icon>
+          </mat-form-field>
+        </div>
+
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Bairro</mat-label>
+            <input matInput formControlName="bairro">
+            <mat-icon matPrefix>location_city</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Cidade</mat-label>
+            <input matInput formControlName="cidade">
+            <mat-icon matPrefix>apartment</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="form-field uf-field">
+            <mat-label>UF</mat-label>
+            <input matInput formControlName="uf" maxlength="2">
+            <mat-icon matPrefix>flag</mat-icon>
+          </mat-form-field>
+        </div>
+
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Complemento</mat-label>
+            <input matInput formControlName="complemento">
+            <mat-icon matPrefix>add_location</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Ponto de Referência</mat-label>
+            <input matInput formControlName="pontoReferencia">
+            <mat-icon matPrefix>place</mat-icon>
+          </mat-form-field>
+        </div>
+
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Link Google Maps</mat-label>
+            <input matInput formControlName="linkGoogleMaps">
+            <mat-icon matPrefix>map</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Espaço Público</mat-label>
+            <input matInput formControlName="espacoPublico">
+            <mat-icon matPrefix>public</mat-icon>
+          </mat-form-field>
+        </div>
+
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Tipo de Espaço</mat-label>
+          <input matInput formControlName="tipoEspaco">
+          <mat-icon matPrefix>meeting_room</mat-icon>
+        </mat-form-field>
+      </div>
+
+      <div class="stepper-actions">
+        <button type="button" mat-stroked-button matStepperPrevious>
+          <mat-icon>arrow_back</mat-icon> Voltar
+        </button>
+        <button type="button" mat-stroked-button color="primary" matStepperNext>
+          Próximo <mat-icon>arrow_forward</mat-icon>
+        </button>
+      </div>
+    </mat-step>
+
+    <mat-step [stepControl]="detalhesControl" label="Detalhes">
+      <div class="step-content" formGroupName="detalhes">
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Categoria</mat-label>
+            <input matInput formControlName="categoria">
+            <mat-icon matPrefix>category</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Periodicidade</mat-label>
+            <input matInput formControlName="periodicidade">
+            <mat-icon matPrefix>repeat</mat-icon>
+          </mat-form-field>
+        </div>
+
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Capacidade</mat-label>
+          <input matInput type="number" formControlName="capacidade">
+          <mat-icon matPrefix>people</mat-icon>
+        </mat-form-field>
+
+        <div class="checkboxes-grid">
+          <mat-checkbox formControlName="espacoCoberto" color="primary">
+            <mat-icon>roofing</mat-icon> Espaço Coberto
+          </mat-checkbox>
+
+          <mat-checkbox formControlName="acessivel" color="primary">
+            <mat-icon>accessible</mat-icon> Acessível
+          </mat-checkbox>
+
+          <mat-checkbox formControlName="estacionamento" color="primary">
+            <mat-icon>local_parking</mat-icon> Estacionamento
+          </mat-checkbox>
+
+          <mat-checkbox formControlName="possuiBanheiros" color="primary">
+            <mat-icon>wc</mat-icon> Possui Banheiros
+          </mat-checkbox>
+
+          <mat-checkbox formControlName="wifiDisponivel" color="primary">
+            <mat-icon>wifi</mat-icon> Wi-Fi Disponível
+          </mat-checkbox>
+        </div>
+
+        <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Equipamentos Fornecidos</mat-label>
+            <input matInput formControlName="equipamentosFornecidos">
+          </mat-form-field>
+      </div>
+
+      <div class="stepper-actions">
+        <button type="button" mat-stroked-button matStepperPrevious>
+          <mat-icon>arrow_back</mat-icon> Voltar
+        </button>
+        <button type="button" mat-stroked-button color="primary" matStepperNext>
+          Próximo <mat-icon>arrow_forward</mat-icon>
+        </button>
+      </div>
+    </mat-step>
+
+    <mat-step [stepControl]="linkControl" label="Links do Evento">
+      <div class="step-content" formGroupName="links">
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Link Redes Sociais</mat-label>
+          <input matInput formControlName="linkSiteOficial">
+          <mat-icon matPrefix>share</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Link do Mapa</mat-label>
+          <input matInput formControlName="linkMapa">
+          <mat-icon matPrefix>map</mat-icon>
+        </mat-form-field>
+      </div>
+
+      <div class="stepper-actions">
+        <button type="button" mat-stroked-button matStepperPrevious>
+          <mat-icon>arrow_back</mat-icon> Voltar
+        </button>
+        <button type="button" mat-stroked-button color="primary" matStepperNext>
+          Próximo <mat-icon>arrow_forward</mat-icon>
+        </button>
+      </div>
+    </mat-step>
+
+    <mat-step [stepControl]="secretariaResponsavelControl" label="Secretaria">
+      <div class="step-content" formGroupName="secretariaResponsavel">
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Secretaria Responsável</mat-label>
+          <mat-select formControlName="id" required>
+            <mat-option *ngFor="let secretaria of secretarias" [value]="secretaria.id">
+              {{ secretaria.nome }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.get('secretariaResponsavel.id')?.hasError('required')">
+            Selecione uma secretaria
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="stepper-actions">
+        <button type="button" mat-stroked-button matStepperPrevious>
+          <mat-icon>arrow_back</mat-icon> Voltar
+        </button>
+        <button mat-raised-button color="primary" type="submit" class="submit-button">
+          <mat-icon>check_circle</mat-icon> Finalizar Cadastro
+        </button>
+      </div>
+    </mat-step>
+  </mat-vertical-stepper>
 </form>

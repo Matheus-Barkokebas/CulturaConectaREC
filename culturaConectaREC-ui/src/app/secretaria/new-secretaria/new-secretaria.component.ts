@@ -36,7 +36,6 @@ export class NewSecretariaComponent implements OnDestroy {
     private readonly httpService: ISecretariaService,
     @Inject(SERVICES_TOKEN.SNACKBAR)
     private readonly snackBarManager: ISnackbarManagerService,
-    private readonly router: Router
   ) {}
 
   ngOnDestroy(): void {

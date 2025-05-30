@@ -52,7 +52,7 @@ export class ListEventoComponent implements OnInit, OnDestroy {
         .delete(evento.id)
         .subscribe((_) =>
           this.snackbarManager.show(
-            `O evento ${evento.nome} foi excluido com sucesso`
+            `O evento ${evento.infoBasicas.nome} foi excluido com sucesso`
           )
         )
     );

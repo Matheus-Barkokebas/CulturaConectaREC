@@ -1,4 +1,12 @@
-import { Component, EventEmitter, Inject, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Inject,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Usuario } from '../../usuario.model';
 import { MatInputModule } from '@angular/material/input';
@@ -17,6 +25,7 @@ import { MatTableModule } from '@angular/material/table';
 import { ISecretariaService } from '../../../services/api/secretaria/isecretaria.service';
 import { SecretariaService } from '../../../services/api/secretaria/secretaria.service';
 import { Permissoes } from '../../../services/api/usuario/usuario.models';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-usuario-form',
@@ -28,6 +37,7 @@ import { Permissoes } from '../../../services/api/usuario/usuario.models';
     MatButtonModule,
     MatSelectModule,
     MatTableModule,
+    MatIconModule,
   ],
   templateUrl: './usuario-form.component.html',
   styleUrl: './usuario-form.component.scss',

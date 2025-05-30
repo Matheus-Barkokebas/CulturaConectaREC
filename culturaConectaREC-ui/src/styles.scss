@@ -2,3 +2,15 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mobile-menu-dialog {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2) !important;
+  border-radius: 12px !important;
+  overflow: hidden;
+  border: 1px solid #e0e0e0;
+  margin-top: 8px;
+}
+
+.mobile-menu-backdrop {
+  background-color: rgba(0, 0, 0, 0.3) !important;
+}
