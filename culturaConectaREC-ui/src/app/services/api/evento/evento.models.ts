@@ -45,6 +45,10 @@ export interface Links {
   linkMapa: string;
 }
 
+export interface ContatosEvento {
+  contatosEvento: string;
+}
+
 export class EventoDto {
   id: number;
   infoBasicas: InfoBasicas;
@@ -52,6 +56,7 @@ export class EventoDto {
   endereco: Endereco;
   detalhes: Detalhes;
   links: Links;
+  contatosEvento: ContatosEvento;
   secretariaResponsavel: Secretaria;
 
   constructor(
@@ -61,6 +66,7 @@ export class EventoDto {
     endereco: Endereco,
     detalhes: Detalhes,
     links: Links,
+    contatosEvento: ContatosEvento,
     secretariaResponsavel: Secretaria
   ) {
     this.id = id;
@@ -69,6 +75,7 @@ export class EventoDto {
     this.endereco = endereco;
     this.detalhes = detalhes;
     this.links = links;
+    this.contatosEvento = contatosEvento;
     this.secretariaResponsavel = secretariaResponsavel;
   }
 }

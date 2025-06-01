@@ -150,7 +150,11 @@
                 <mat-icon>map</mat-icon>
                 <a [href]="data.evento.links.linkMapa" target="_blank">Mapa do Evento</a>
               </div>
-              <div *ngIf="!data.evento.links.linkSiteOficial && !data.evento.links.linkMapa">
+              <div class="link-item" *ngIf="data.evento.contatosEvento">
+                <mat-icon>phone</mat-icon>
+                <a [href]="data.evento.contatosEvento" target="_blank">Link de Contato</a>
+              </div>
+              <div *ngIf="!data.evento.links.linkSiteOficial && !data.evento.links.linkMapa && !data.evento.contatosEvento  ">
                 <p>Nenhum link relacionado informado</p>
               </div>
             </div>

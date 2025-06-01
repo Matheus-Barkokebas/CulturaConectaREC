@@ -118,6 +118,9 @@ export class EventoFormComponent implements OnInit, OnDestroy, OnChanges {
       linkSiteOficial: '',
       linkMapa: '',
     },
+    contatosEvento: {
+      contatosEvento: '',
+    },
     secretariaResponsavel: {
       id: 0,
       nome: '',
@@ -178,6 +181,9 @@ export class EventoFormComponent implements OnInit, OnDestroy, OnChanges {
       links: this.fb.group({
         linkSiteOficial: [this.evento.links.linkSiteOficial],
         linkMapa: [this.evento.links.linkMapa],
+      }),
+      contatosEvento: this.fb.group({
+        contatosEvento: [this.evento.contatosEvento.contatosEvento],
       }),
       secretariaResponsavel: this.fb.group({
         id: [this.evento.secretariaResponsavel.id],
@@ -294,6 +300,10 @@ export class EventoFormComponent implements OnInit, OnDestroy, OnChanges {
 
   get linkControl(): AbstractControl {
     return this.form.get('links')!;
+  }
+
+  get contatosEvento(): AbstractControl {
+    return this.form.get('contatosEvento')!;
   }
 
   get secretariaResponsavelControl(): AbstractControl {

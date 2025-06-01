@@ -1,11 +1,11 @@
 package cesar.ccr.com.entity;
 
+import cesar.ccr.com.entity.embeddable.ContatosEvento;
 import cesar.ccr.com.entity.embeddable.DetalhesEvento;
 import cesar.ccr.com.entity.embeddable.EnderecoEvento;
 import cesar.ccr.com.entity.embeddable.InfoBasicas;
 import cesar.ccr.com.entity.embeddable.LinksEvento;
 import cesar.ccr.com.entity.embeddable.PeriodoEvento;
-import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -39,6 +39,9 @@ public class Evento {
 
     @Embedded
     private LinksEvento links;
+    
+    @Embedded
+    private ContatosEvento contatosEvento;
 
     @ManyToOne
     @JoinColumn(name = "secretaria_responsavel")

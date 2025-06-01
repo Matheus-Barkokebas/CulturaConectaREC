@@ -22,6 +22,7 @@ public interface IEventoMapper {
     @Mapping(source = "endereco", target = "endereco")
     @Mapping(source = "detalhes", target = "detalhes")
     @Mapping(source = "links", target = "links")
+    @Mapping(source = "contatosEvento", target = "contatosEvento")
     @Mapping(source = "secretariaResponsavel", target = "secretariaResponsavel")
 	Evento toEntity(final EventoDto dto);
 	
@@ -33,6 +34,7 @@ public interface IEventoMapper {
     @Mapping(source = "endereco", target = "endereco")
     @Mapping(source = "detalhes", target = "detalhes")
     @Mapping(source = "links", target = "links")
+	@Mapping(source = "contatosEvento", target = "contatosEvento")
     @Mapping(source = "secretariaResponsavel", target = "secretariaResponsavel")
 	EventoDto toDto(final Evento entity);
 	

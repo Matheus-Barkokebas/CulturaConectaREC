@@ -3,6 +3,7 @@ package cesar.ccr.com.controller.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import cesar.ccr.com.entity.Secretaria;
+import cesar.ccr.com.entity.embeddable.ContatosEvento;
 import cesar.ccr.com.entity.embeddable.DetalhesEvento;
 import cesar.ccr.com.entity.embeddable.EnderecoEvento;
 import cesar.ccr.com.entity.embeddable.InfoBasicas;
@@ -33,6 +34,9 @@ public record EventoDto(
 
         @JsonProperty("links")
         LinksEvento links,
+        
+        @JsonProperty("contatosEvento")
+        ContatosEvento contatosEvento,
 
         @JsonProperty("secretariaResponsavel")
         Secretaria secretariaResponsavel

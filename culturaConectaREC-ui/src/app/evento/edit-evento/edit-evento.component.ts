@@ -64,6 +64,9 @@ export class EditEventoComponent implements OnInit, OnDestroy {
       linkSiteOficial: '',
       linkMapa: '',
     },
+    contatosEvento: {
+      contatosEvento: '',
+    },
     secretariaResponsavel: {
       id: 0,
       nome: '',
