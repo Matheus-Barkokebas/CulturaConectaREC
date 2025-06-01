@@ -33,7 +33,7 @@ export class NewUsuarioComponent implements OnDestroy {
     @Inject(SERVICES_TOKEN.HTTP.USUARIO)
     private readonly httpService: IUsuarioService,
     @Inject(SERVICES_TOKEN.SNACKBAR)
-    private readonly snackBarManager: ISnackbarManagerService,
+    private readonly snackBarManager: ISnackbarManagerService
   ) {}
 
   ngOnDestroy(): void {

@@ -12,7 +12,6 @@ import { SecretariaFormComponent } from '../components/secretaria-form/secretari
 import { Subscription } from 'rxjs';
 import { ISecretariaService } from '../../services/api/secretaria/isecretaria.service';
 import { ISnackbarManagerService } from '../../services/isnackbar-manager.service';
-import { Router } from '@angular/router';
 import { MatTabsModule } from '@angular/material/tabs';
 import { Secretaria } from '../secretaria.models';
 
@@ -35,7 +34,7 @@ export class NewSecretariaComponent implements OnDestroy {
     @Inject(SERVICES_TOKEN.HTTP.SECRETARIA)
     private readonly httpService: ISecretariaService,
     @Inject(SERVICES_TOKEN.SNACKBAR)
-    private readonly snackBarManager: ISnackbarManagerService,
+    private readonly snackBarManager: ISnackbarManagerService
   ) {}
 
   ngOnDestroy(): void {

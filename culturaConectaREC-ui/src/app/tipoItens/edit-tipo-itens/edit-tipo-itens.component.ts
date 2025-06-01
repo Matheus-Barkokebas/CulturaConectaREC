@@ -25,7 +25,7 @@ export class EditTipoItensComponent implements OnInit, OnDestroy {
   tipoItens: TipoItens = { id: 0, nome: '' };
 
   constructor(
-    @Inject(SERVICES_TOKEN.HTTP.SECRETARIA)
+    @Inject(SERVICES_TOKEN.HTTP.TIPOITENS)
     private readonly httpService: ITipoItensService,
     @Inject(SERVICES_TOKEN.SNACKBAR)
     private readonly snackBarManager: ISnackbarManagerService,
@@ -37,7 +37,7 @@ export class EditTipoItensComponent implements OnInit, OnDestroy {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     if (!id) {
       this.snackBarManager.show('Erro ao recuperar informacoes do tipo item');
-      this.router.navigate(['list/tipoItem']);
+      this.router.navigate(['list/tipoItens']);
       return;
     }
     this.httpsubscriptions?.push(
@@ -55,12 +55,12 @@ export class EditTipoItensComponent implements OnInit, OnDestroy {
       this.httpsubscriptions?.push(
         this.httpService.update(value.id, value).subscribe((_) => {
           this.snackBarManager.show('Tipo item autalizado com sucesso');
-          this.router.navigate(['list/tipoItem']);
+          this.router.navigate(['list/tipoItens']);
         })
       );
       return;
     }
     this.snackBarManager.show('Um erro inesperado aconteceu');
-    this.router.navigate(['list/tipoItem']);
+    this.router.navigate(['list/tipoItens']);
   }
 }

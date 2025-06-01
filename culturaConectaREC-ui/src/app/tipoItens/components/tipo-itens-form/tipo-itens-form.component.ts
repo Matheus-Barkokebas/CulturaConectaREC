@@ -14,7 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatFormFieldModule,
     MatButtonModule,
     MatIconModule,
-],
+  ],
   templateUrl: './tipo-itens-form.component.html',
   styleUrl: './tipo-itens-form.component.scss',
 })

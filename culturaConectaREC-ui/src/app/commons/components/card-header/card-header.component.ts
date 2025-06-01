@@ -1,4 +1,10 @@
-import { Component, OnDestroy, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import {
+  Component,
+  OnDestroy,
+  OnInit,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
@@ -18,10 +24,10 @@ import { Subscription } from 'rxjs';
     MatButtonModule,
     MatMenuModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
   ],
   templateUrl: './card-header.component.html',
-  styleUrls: ['./card-header.component.scss']
+  styleUrls: ['./card-header.component.scss'],
 })
 export class CardHeaderComponent implements OnInit, OnDestroy {
   @ViewChild('mobileMenuTemplate') mobileMenuTemplate!: TemplateRef<any>;
@@ -37,11 +43,13 @@ export class CardHeaderComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscriptions.add(
-      this.authService.isLoggedIn$.subscribe(status => this.isLoggedIn = status)
+      this.authService.isLoggedIn$.subscribe(
+        (status) => (this.isLoggedIn = status)
+      )
     );
 
     this.subscriptions.add(
-      this.authService.userRole$.subscribe(role => this.userRole = role)
+      this.authService.userRole$.subscribe((role) => (this.userRole = role))
     );
   }
 
@@ -50,7 +58,7 @@ export class CardHeaderComponent implements OnInit, OnDestroy {
       position: { top: '70px', right: '16px' },
       panelClass: 'mobile-menu-dialog',
       backdropClass: 'mobile-menu-backdrop',
-      autoFocus: false
+      autoFocus: false,
     });
   }
 

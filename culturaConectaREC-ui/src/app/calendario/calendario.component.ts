@@ -40,7 +40,7 @@ interface CalendarDay {
     MatIconModule,
     MatPaginatorModule,
     MatButtonModule,
-    DatePipe
+    DatePipe,
   ],
   providers: [
     provideNativeDateAdapter(),
@@ -51,12 +51,16 @@ interface CalendarDay {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CalendarioComponent {
-  private readonly eventoService = inject<IEventoService>(SERVICES_TOKEN.HTTP.EVENTO);
+  private readonly eventoService = inject<IEventoService>(
+    SERVICES_TOKEN.HTTP.EVENTO
+  );
 
   selected = signal<Date | null>(null);
   currentDate = signal<Date>(new Date());
   eventosDoDia = signal<Evento[]>([]);
-  eventosPorData = signal<{[key: string]: {eventos: Evento[], cultura: number, turismo: number}}>({});
+  eventosPorData = signal<{
+    [key: string]: { eventos: Evento[]; cultura: number; turismo: number };
+  }>({});
 
   pageSize = signal(2);
   pageIndex = signal(0);
@@ -99,7 +103,7 @@ export class CalendarioComponent {
         display: '',
         hasCultura: false,
         hasTurismo: false,
-        hasBoth: false
+        hasBoth: false,
       });
     }
 
@@ -113,7 +117,7 @@ export class CalendarioComponent {
         display: i.toString(),
         hasCultura: eventosData?.cultura > 0,
         hasTurismo: eventosData?.turismo > 0,
-        hasBoth: eventosData?.cultura > 0 && eventosData?.turismo > 0
+        hasBoth: eventosData?.cultura > 0 && eventosData?.turismo > 0,
       });
     }
 
@@ -139,28 +143,36 @@ export class CalendarioComponent {
   carregarEventos() {
     this.eventoService.list().subscribe({
       next: (eventos: Evento[]) => {
-        const eventosPorData: {[key: string]: {eventos: Evento[], cultura: number, turismo: number}} = {};
+        const eventosPorData: {
+          [key: string]: {
+            eventos: Evento[];
+            cultura: number;
+            turismo: number;
+          };
+        } = {};
 
-        eventos.forEach(evento => {
+        eventos.forEach((evento) => {
           if (evento.periodo?.dataInicio) {
             let dataStr: string;
 
             if (typeof evento.periodo.dataInicio === 'string') {
-              dataStr = new Date(evento.periodo.dataInicio).toISOString().slice(0, 10);
-            }
-            else if (evento.periodo.dataInicio instanceof Date) {
+              dataStr = new Date(evento.periodo.dataInicio)
+                .toISOString()
+                .slice(0, 10);
+            } else if (evento.periodo.dataInicio instanceof Date) {
               dataStr = evento.periodo.dataInicio.toISOString().slice(0, 10);
             } else {
               return;
             }
 
             if (!eventosPorData[dataStr]) {
-              eventosPorData[dataStr] = {eventos: [], cultura: 0, turismo: 0};
+              eventosPorData[dataStr] = { eventos: [], cultura: 0, turismo: 0 };
             }
 
             eventosPorData[dataStr].eventos.push(evento);
 
-            const secretaria = evento.secretariaResponsavel?.nome?.toLowerCase() || '';
+            const secretaria =
+              evento.secretariaResponsavel?.nome?.toLowerCase() || '';
             if (secretaria.includes('cultura')) {
               eventosPorData[dataStr].cultura++;
             } else if (secretaria.includes('turismo')) {
@@ -173,7 +185,7 @@ export class CalendarioComponent {
       },
       error: (err) => {
         console.error('Erro ao buscar eventos:', err);
-      }
+      },
     });
   }
 

@@ -1,19 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import {
-  ActivatedRoute,
-  NavigationEnd,
-  Router,
-  RouterOutlet,
-} from '@angular/router';
-import { filter, map, Subscription } from 'rxjs';
-import { NewSecretariaComponent } from './secretaria/new-secretaria/new-secretaria.component';
-import { ListSecretariaComponent } from './secretaria/list-secretaria/list-secretaria.component';
+import { Router, RouterOutlet } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { CommonModule } from '@angular/common';
-import { NewUsuarioComponent } from './usuario/new-usuario/new-usuario.component';
 import { CardHeaderComponent } from './commons/components/card-header/card-header.component';
 import { AuthService } from './services/auth/auth.service';
 
@@ -36,13 +28,9 @@ export class AppComponent implements OnInit, OnDestroy {
 
   isLoggedIn: boolean = false;
 
-  private subscriptions = new Subscription();
   private authSubscription?: Subscription;
 
- constructor(
-    private authService: AuthService,
-    public router: Router
-  ) {}
+  constructor(private authService: AuthService, public router: Router) {}
 
   ngOnInit(): void {
     this.isLoggedIn = this.authService.isLoggedIn();

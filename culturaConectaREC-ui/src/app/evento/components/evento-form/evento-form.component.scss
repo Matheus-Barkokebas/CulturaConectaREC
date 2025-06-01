@@ -33,7 +33,10 @@
     background: transparent;
 
     .mat-step-header {
-      &.cdk-keyboard-focused, &.cdk-program-focused, &:hover {
+
+      &.cdk-keyboard-focused,
+      &.cdk-program-focused,
+      &:hover {
         background-color: rgba(25, 118, 210, 0.04);
       }
 
@@ -194,6 +197,11 @@
 }
 
 @keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }

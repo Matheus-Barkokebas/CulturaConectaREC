@@ -1,4 +1,15 @@
-import { AfterViewInit, Component, EventEmitter, Inject, Input, OnChanges, OnDestroy, Output, SimpleChanges, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  EventEmitter,
+  Inject,
+  Input,
+  OnChanges,
+  OnDestroy,
+  Output,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
@@ -26,7 +37,8 @@ import { YesNoDialogComponent } from '../../../commons/components/yes-no-dialog/
     { provide: SERVICES_TOKEN.DIALOG, useClass: DialogManagerService },
   ],
 })
-export class TipoItensTableComponent implements AfterViewInit, OnChanges, OnDestroy
+export class TipoItensTableComponent
+  implements AfterViewInit, OnChanges, OnDestroy
 {
   @Input() tipoItens: TipoItens[] = [];
 

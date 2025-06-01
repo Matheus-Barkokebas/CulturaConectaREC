@@ -8,7 +8,13 @@ import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-secretaria-form',
-  imports: [FormsModule, MatInputModule, MatFormFieldModule, MatButtonModule, MatIconModule],
+  imports: [
+    FormsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatIconModule,
+  ],
   templateUrl: './secretaria-form.component.html',
   styleUrl: './secretaria-form.component.scss',
 })

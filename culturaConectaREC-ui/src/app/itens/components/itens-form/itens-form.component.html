@@ -9,7 +9,7 @@
       <mat-label>Nome</mat-label>
       <input matInput name="name" #nameModel="ngModel" [(ngModel)]="itens.nome" required>
       @if (nameModel.hasError('required')){
-        <mat-error>Nome é obrigatório</mat-error>
+      <mat-error>Nome é obrigatório</mat-error>
       }
     </mat-form-field>
 
@@ -21,7 +21,7 @@
         </mat-option>
       </mat-select>
       @if (tipoItensModel.hasError('required')){
-        <mat-error>Tipo do Item é obrigatório</mat-error>
+      <mat-error>Tipo do Item é obrigatório</mat-error>
       }
     </mat-form-field>
 

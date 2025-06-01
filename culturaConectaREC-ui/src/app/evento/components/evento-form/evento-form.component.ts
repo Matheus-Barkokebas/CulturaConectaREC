@@ -6,7 +6,6 @@ import {
   OnDestroy,
   OnInit,
   Output,
-  HostListener,
   OnChanges,
   SimpleChanges,
 } from '@angular/core';
@@ -71,7 +70,7 @@ import { IItensService } from '../../../services/api/itens/iitens.service';
     MatCheckboxModule,
   ],
 })
-export class EventoFormComponent implements OnInit, OnDestroy, OnChanges  {
+export class EventoFormComponent implements OnInit, OnDestroy, OnChanges {
   form: FormGroup;
   secretarias: Secretaria[] = [];
   itens: Itens[] = [];
@@ -113,7 +112,7 @@ export class EventoFormComponent implements OnInit, OnDestroy, OnChanges  {
       estacionamento: false,
       possuiBanheiros: false,
       wifiDisponivel: false,
-      equipamentosFornecidos: ''
+      equipamentosFornecidos: '',
     },
     links: {
       linkSiteOficial: '',
@@ -174,9 +173,7 @@ export class EventoFormComponent implements OnInit, OnDestroy, OnChanges  {
         estacionamento: [this.evento.detalhes.estacionamento],
         possuiBanheiros: [this.evento.detalhes.possuiBanheiros],
         wifiDisponivel: [this.evento.detalhes.wifiDisponivel],
-        equipamentosFornecidos: [
-          this.evento.detalhes.equipamentosFornecidos,
-        ],
+        equipamentosFornecidos: [this.evento.detalhes.equipamentosFornecidos],
       }),
       links: this.fb.group({
         linkSiteOficial: [this.evento.links.linkSiteOficial],
@@ -269,7 +266,7 @@ export class EventoFormComponent implements OnInit, OnDestroy, OnChanges  {
     this.httpSubscriptions.forEach((s) => s.unsubscribe());
   }
 
-   ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(changes: SimpleChanges): void {
     if (changes['evento'] && changes['evento'].currentValue) {
       this.form.patchValue(changes['evento'].currentValue);
     }

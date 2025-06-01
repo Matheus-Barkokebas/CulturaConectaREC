@@ -19,7 +19,6 @@ import { Subscription } from 'rxjs';
 import { SERVICES_TOKEN } from '../../../services/service.token';
 import { UsuarioService } from '../../../services/api/usuario/usuario.service';
 import { SnackbarManagerService } from '../../../services/snackbar-manager.service';
-import { IUsuarioService } from '../../../services/api/usuario/iusuario.service';
 import { ISnackbarManagerService } from '../../../services/isnackbar-manager.service';
 import { MatTableModule } from '@angular/material/table';
 import { ISecretariaService } from '../../../services/api/secretaria/isecretaria.service';

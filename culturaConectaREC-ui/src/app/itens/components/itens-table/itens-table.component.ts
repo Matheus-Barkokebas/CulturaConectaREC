@@ -1,4 +1,15 @@
-import { AfterViewInit, Component, EventEmitter, Inject, Input, OnChanges, OnDestroy, Output, SimpleChanges, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  EventEmitter,
+  Inject,
+  Input,
+  OnChanges,
+  OnDestroy,
+  Output,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 import { SERVICES_TOKEN } from '../../../services/service.token';
 import { DialogManagerService } from '../../../services/dialog-manager.service';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
@@ -26,7 +37,8 @@ import { YesNoDialogComponent } from '../../../commons/components/yes-no-dialog/
     { provide: SERVICES_TOKEN.DIALOG, useClass: DialogManagerService },
   ],
 })
-export class ItensTableComponent implements AfterViewInit, OnChanges, OnDestroy
+export class ItensTableComponent
+  implements AfterViewInit, OnChanges, OnDestroy
 {
   @Input() itens: Itens[] = [];
 
@@ -34,7 +46,7 @@ export class ItensTableComponent implements AfterViewInit, OnChanges, OnDestroy
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  displayedColumns: string[] = ['nome', 'tipo' ,'actions'];
+  displayedColumns: string[] = ['nome', 'tipo', 'actions'];
 
   private dialogManagerServiceSubscriptions?: Subscription;
 

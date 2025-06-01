@@ -1,11 +1,4 @@
-import {
-  Component,
-  Inject,
-  Input,
-  OnChanges,
-  OnDestroy,
-  OnInit,
-} from '@angular/core';
+import { Component, Inject, Input, OnDestroy, OnInit } from '@angular/core';
 import { UsuarioTableComponent } from '../components/usuario-table/usuario-table.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { SERVICES_TOKEN } from '../../services/service.token';

@@ -1,6 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, Inject } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -25,8 +30,8 @@ import { MatIconModule } from '@angular/material/icon';
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
   providers: [
-      { provide: SERVICES_TOKEN.SNACKBAR, useClass: SnackbarManagerService },
-    ],
+    { provide: SERVICES_TOKEN.SNACKBAR, useClass: SnackbarManagerService },
+  ],
 })
 export class LoginComponent {
   loginForm: FormGroup;
@@ -36,10 +41,11 @@ export class LoginComponent {
     private auth: AuthService,
     private router: Router,
     @Inject(SERVICES_TOKEN.SNACKBAR)
-    private readonly snackBarManager: ISnackbarManagerService,) {
+    private readonly snackBarManager: ISnackbarManagerService
+  ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      senha: ['', Validators.required]
+      senha: ['', Validators.required],
     });
   }
 
@@ -51,9 +57,9 @@ export class LoginComponent {
           this.snackBarManager.show('Login efetuado com sucesso');
           this.router.navigate(['list/evento']);
         },
-        error: err => {
+        error: (err) => {
           this.snackBarManager.show('Email ou Senha incorretos');
-        }
+        },
       });
     }
   }

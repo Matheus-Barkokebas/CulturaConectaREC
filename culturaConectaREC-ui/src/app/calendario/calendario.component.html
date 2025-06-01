@@ -16,13 +16,10 @@
       </div>
 
       <div class="days-grid">
-        <div *ngFor="let day of calendarDays()" class="day"
-             [class.empty]="!day.value"
-             [class.selected]="isSelected(day.value)"
-             [class.has-cultura-events]="day.hasCultura"
-             [class.has-turismo-events]="day.hasTurismo"
-             [class.has-both-events]="day.hasBoth"
-             (click)="selectDay(day.value)">
+        <div *ngFor="let day of calendarDays()" class="day" [class.empty]="!day.value"
+          [class.selected]="isSelected(day.value)" [class.has-cultura-events]="day.hasCultura"
+          [class.has-turismo-events]="day.hasTurismo" [class.has-both-events]="day.hasBoth"
+          (click)="selectDay(day.value)">
           <span class="day-number">{{ day.display }}</span>
           <div class="event-indicators">
             <span *ngIf="day.hasCultura" class="indicator cultura"></span>

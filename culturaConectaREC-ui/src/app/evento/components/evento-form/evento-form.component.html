@@ -95,12 +95,12 @@
         <div class="form-row">
           <mat-form-field appearance="outline" class="form-field cep-field">
             <mat-label>CEP</mat-label>
-            <input matInput formControlName="cep" (blur)="consultarCEP()" (input)="formatarCEP($event)"
-                   maxlength="9" placeholder="00000-000" required>
+            <input matInput formControlName="cep" (blur)="consultarCEP()" (input)="formatarCEP($event)" maxlength="9"
+              placeholder="00000-000" required>
             <mat-icon matPrefix>pin_drop</mat-icon>
             <mat-icon matSuffix *ngIf="isLoadingCep" class="spinner">autorenew</mat-icon>
             <button type="button" mat-icon-button matSuffix *ngIf="!isLoadingCep" (click)="consultarCEP()"
-                    matTooltip="Consultar CEP">
+              matTooltip="Consultar CEP">
               <mat-icon>search</mat-icon>
             </button>
             <mat-error *ngIf="form.get('endereco.cep')?.hasError('pattern')">
@@ -233,9 +233,9 @@
         </div>
 
         <mat-form-field appearance="outline" class="form-field">
-            <mat-label>Equipamentos Fornecidos</mat-label>
-            <input matInput formControlName="equipamentosFornecidos">
-          </mat-form-field>
+          <mat-label>Equipamentos Fornecidos</mat-label>
+          <input matInput formControlName="equipamentosFornecidos">
+        </mat-form-field>
       </div>
 
       <div class="stepper-actions">

@@ -8,9 +8,8 @@ describe('SecretariaTableComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SecretariaTableComponent]
-    })
-    .compileComponents();
+      imports: [SecretariaTableComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(SecretariaTableComponent);
     component = fixture.componentInstance;
