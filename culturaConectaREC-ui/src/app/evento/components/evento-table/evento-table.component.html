@@ -26,12 +26,13 @@
         </mat-card-content>
 
         <mat-card-actions>
-          <button mat-icon-button color="primary" matTooltip="Editar"
+          <button *ngIf="userRole === 'ROLE_ADMIN'" mat-icon-button color="primary" matTooltip="Editar"
             (click)="update(evento); $event.stopPropagation()">
             <mat-icon>edit</mat-icon>
           </button>
 
-          <button mat-icon-button color="warn" matTooltip="Excluir" (click)="delete(evento); $event.stopPropagation()">
+          <button *ngIf="userRole === 'ROLE_ADMIN'" mat-icon-button color="warn" matTooltip="Excluir"
+            (click)="delete(evento); $event.stopPropagation()">
             <mat-icon>delete</mat-icon>
           </button>
 

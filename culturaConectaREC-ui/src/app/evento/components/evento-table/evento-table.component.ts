@@ -24,6 +24,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { Evento } from '../../evento.model';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { DescricaoDialogComponent } from '../../../descricao-dialog/descricao-dialog.component';
+import { AuthService } from '../../../services/auth/auth.service';
 
 @Component({
   selector: 'app-evento-table',
@@ -49,6 +50,10 @@ export class EventoTableComponent implements OnChanges, OnDestroy {
   @Input() eventos: Evento[] = [];
   paginatedEventos: Evento[] = [];
 
+  userRole: string | null = null;
+  isLoggedIn: boolean = false;
+  private subscriptions = new Subscription();
+
   @Output() onConfirmDelete = new EventEmitter<Evento>();
   @Output() onRequestUpdate = new EventEmitter<Evento>();
 
@@ -64,8 +69,15 @@ export class EventoTableComponent implements OnChanges, OnDestroy {
   constructor(
     @Inject(SERVICES_TOKEN.DIALOG)
     private readonly dialogManagerService: IDialogManagerService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private authService: AuthService
   ) {}
+
+  ngOnInit(): void {
+    this.subscriptions.add(
+      this.authService.userRole$.subscribe((role) => (this.userRole = role))
+    );
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['eventos']) {

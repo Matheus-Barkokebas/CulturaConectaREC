@@ -8,6 +8,8 @@ import { Evento } from '../evento/evento.model';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { Subscription } from 'rxjs';
+import { AuthService } from '../services/auth/auth.service';
 
 @Component({
   selector: 'app-descricao-dialog',
@@ -17,6 +19,10 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './descricao-dialog.component.scss',
 })
 export class DescricaoDialogComponent {
+
+    userRole: string | null = null;
+    private subscriptions = new Subscription();
+
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public data: {
@@ -24,8 +30,15 @@ export class DescricaoDialogComponent {
       onUpdate: () => void;
       onDelete: () => void;
     },
-    private dialogRef: MatDialogRef<DescricaoDialogComponent>
+    private dialogRef: MatDialogRef<DescricaoDialogComponent>,
+    private authService: AuthService,
   ) {}
+
+  ngOnInit() {
+    this.subscriptions.add(
+      this.authService.userRole$.subscribe((role) => (this.userRole = role))
+    );
+  }
 
   fecharModal() {
     this.dialogRef.close();

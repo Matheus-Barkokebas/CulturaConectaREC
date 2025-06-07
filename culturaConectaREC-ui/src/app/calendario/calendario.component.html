@@ -58,10 +58,10 @@
           </mat-card-content>
 
           <mat-card-actions>
-            <button mat-icon-button (click)="update(evento); $event.stopPropagation()">
+            <button *ngIf="userRole === 'ROLE_ADMIN'" mat-icon-button (click)="update(evento); $event.stopPropagation()">
               <mat-icon color="primary">edit</mat-icon>
             </button>
-            <button mat-icon-button (click)="delete(evento); $event.stopPropagation()">
+            <button *ngIf="userRole === 'ROLE_ADMIN'" mat-icon-button (click)="delete(evento); $event.stopPropagation()">
               <mat-icon color="warn">delete</mat-icon>
             </button>
             <button mat-button (click)="abrirDescricao(evento); $event.stopPropagation()">

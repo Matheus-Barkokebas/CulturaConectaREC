@@ -6,10 +6,10 @@
       <div class="modal-header d-flex justify-content-between align-items-center">
         <h5 class="modal-title">{{ data.evento.infoBasicas.nome }}</h5>
         <div class="d-flex align-items-center gap-2">
-          <button mat-icon-button color="primary" (click)="update()">
+          <button *ngIf="userRole === 'ROLE_ADMIN'" mat-icon-button color="primary" (click)="update()">
             <mat-icon>edit</mat-icon>
           </button>
-          <button mat-icon-button color="warn" (click)="delete()">
+          <button *ngIf="userRole === 'ROLE_ADMIN'" mat-icon-button color="warn" (click)="delete()">
             <mat-icon>delete</mat-icon>
           </button>
         </div>

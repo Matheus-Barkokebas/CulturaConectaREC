@@ -21,6 +21,8 @@ import { DescricaoDialogComponent } from '../descricao-dialog/descricao-dialog.c
 import { MatDialog } from '@angular/material/dialog';
 import { YesNoDialogComponent } from '../commons/components/yes-no-dialog/yes-no-dialog.component';
 import { MatButtonModule } from '@angular/material/button';
+import { Subscription } from 'rxjs';
+import { AuthService } from '../services/auth/auth.service';
 
 interface CalendarDay {
   value: Date | null;
@@ -55,6 +57,8 @@ export class CalendarioComponent {
     SERVICES_TOKEN.HTTP.EVENTO
   );
 
+  userRole: string | null = null;
+  private subscriptions = new Subscription();
   selected = signal<Date | null>(null);
   currentDate = signal<Date>(new Date());
   eventosDoDia = signal<Evento[]>([]);
@@ -71,10 +75,16 @@ export class CalendarioComponent {
   @Output() onConfirmDelete = new EventEmitter<Evento>();
   @Output() onRequestUpdate = new EventEmitter<Evento>();
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog,
+        private authService: AuthService,
+  ) {}
 
   ngOnInit() {
     this.carregarEventos();
+
+    this.subscriptions.add(
+      this.authService.userRole$.subscribe((role) => (this.userRole = role))
+    );
   }
 
   currentMonth = computed(() => {
